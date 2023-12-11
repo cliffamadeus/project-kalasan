@@ -24,7 +24,6 @@ var areaIcon = L.icon({
   popupAnchor:  [0, -40]  
 });
 
-
 fetch('json/trees.json') 
   .then(response => response.json())
   .then(data => {
@@ -61,7 +60,6 @@ fetch('json/trees.json')
             <p style="margin: 10px 0;">Planted by: ${tree.tree_planted_by}</p>
           </div>
           `);
-
 
           markers.addLayer(treeMarker);
 
