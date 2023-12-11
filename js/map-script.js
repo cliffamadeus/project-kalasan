@@ -33,7 +33,7 @@ fetch('json/trees.json')
       var areaMarker = L.marker(new L.LatLng(area.area_lat, area.area_lng), {icon: areaIcon});
 
       areaMarker.bindPopup(`
-      <div style="text-align: center; padding: 10px;">
+      <div padding: 10px;">
         <h2 style="margin-bottom: 5px;">${area_name}</h2>
         <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
         <p style="margin: 10px 0;">This is a beautiful area.</p>
@@ -55,7 +55,7 @@ fetch('json/trees.json')
           treeMarker.bindPopup("<h3>" + tree.tree_name + "</h3>");
 
           treeMarker.bindPopup(`
-          <div style="text-align: center; padding: 10px;">
+          <div padding: 10px;">
             <h2 style="margin-bottom: 5px;">${tree.tree_name}</h2>
             <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
             <p style="margin: 10px 0;">Planted by: ${tree.tree_planted_by}</p>
