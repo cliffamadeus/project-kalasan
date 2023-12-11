@@ -77,7 +77,7 @@ fetch('json/trees.json')
 
       const searchInput = document.getElementById('searchInput');
       const searchResults = document.getElementById('searchResults');
-  
+      /*
       performSearch('');
   
       function performSearch(searchTerm) {
@@ -87,7 +87,7 @@ fetch('json/trees.json')
         const filteredResults = flatResults.filter(result => result.tree_name.toLowerCase().includes(searchTerm));
   
         displaySearchResults(filteredResults);
-      }
+      }*/
   
       searchInput.addEventListener('input', function () {
         const searchTerm = searchInput.value.toLowerCase();
