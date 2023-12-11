@@ -1,52 +1,8 @@
 [
     {
-      "title": "Sumilao Public Park",
-      "lat": 8.327094,
-      "long": 124.977950,
-      "trees": [
-        {
-          "tree_name": "Gmelina",
-          "tree_lat": 8.327476,
-          "tree_long": 124.978165,
-          "tree_planted_by": "Anon"
-        },
-        {
-          "tree_name": "Narra",
-          "tree_lat": 8.327348,
-          "tree_long": 124.978030,
-          "tree_planted_by": "Anon"
-          
-        },
-        {
-          "tree_name": "Narra",
-          "tree_lat": 8.327279,
-          "tree_long": 124.977977,
-          "tree_planted_by": "Anon"
-        },
-        {
-          "tree_name": "Molave",
-          "tree_lat": 8.326674,
-          "tree_long": 124.977998,
-          "tree_planted_by": "Anon"
-        },
-        {
-          "tree_name": "Molave",
-          "tree_lat": 8.326690,
-          "tree_long": 124.977912,
-          "tree_planted_by": "Anon"
-        },
-        {
-          "tree_name": "Molave",
-          "tree_lat": 8.326711,
-          "tree_long": 124.977837,
-          "tree_planted_by": "Anon"
-        }
-      ]
-    },
-    {
+      "area_name": "Kisolon Tree Park",
       "lat": 8.335444,
       "long": 124.972245,
-      "title": "Kisolon Tree Park",
       "trees": [
         {
           "tree_name": "Gmelina",
