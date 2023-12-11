@@ -37,7 +37,16 @@ fetch('json/trees.json')
       var title = park.title;
       var parkMarker = L.marker(new L.LatLng(park.lat, park.long), {icon: parkIcon});
 
-      parkMarker.bindPopup("<h2>" + title + "</h2>");
+      //parkMarker.bindPopup("<h2>" + title + "</h2> <br>");
+
+      parkMarker.bindPopup(`
+      <div style="text-align: center; padding: 10px;">
+        <h2 style="margin-bottom: 5px;">${title}</h2>
+        <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
+        <p style="margin: 10px 0;">This is a beautiful park.</p>
+        <a href="#" style="color: blue; text-decoration: none;">Learn More</a>
+      </div>
+    `);
 
       markers.addLayer(parkMarker);
 
