@@ -66,7 +66,7 @@ fetch('json/trees.json')
             <h2 style="margin-bottom: 5px;">${tree.tree_name}</h2>
             <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
             <p style="margin: 10px 0;">This is a beautiful park.</p>
-            <a href="#" style="color: blue; text-decoration: none;">Learn More</a>
+            <p>Planted by: ${tree.tree_planted_by}</p>
           </div>
           `);
 
