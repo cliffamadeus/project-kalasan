@@ -1,20 +1,17 @@
-// External JSON data for search results
 let searchData;
 
-// Fetch and parse the JSON data
 fetch('./json/trees.json')
   .then(response => response.json())
   .then(data => {
     searchData = data;
 
-    // Set up event listener after data is loaded
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
 
     performSearch('');
 
     function performSearch(searchTerm) {
-      // Flatten the tree data for easier searching
+
       const flatResults = searchData.flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name })));
 
       const filteredResults = flatResults.filter(result => result.tree_name.toLowerCase().includes(searchTerm));
@@ -25,7 +22,6 @@ fetch('./json/trees.json')
     searchInput.addEventListener('input', function () {
       const searchTerm = searchInput.value.toLowerCase();
 
-      // Flatten the tree data for easier searching
       const flatResults = searchData.flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name })));
 
       const filteredResults = flatResults.filter(result => result.tree_name.toLowerCase().includes(searchTerm));
