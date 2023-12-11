@@ -23,12 +23,13 @@ var greenIcon = L.icon({
 
 var areaIcon = L.icon({
   iconUrl: './img/area-icon.png',
-  iconSize:     [50, 64], 
-  shadowSize:   [50, 64], 
-  iconAnchor:   [22, 94], 
-  shadowAnchor: [4, 62], 
-  popupAnchor:  [-3, -76] 
+  iconSize:     [40, 40], 
+  shadowSize:   [40, 40], 
+  iconAnchor:   [20, 40], 
+  shadowAnchor: [2, 40], 
+  popupAnchor:  [0, -40]  
 });
+
 
 fetch('json/trees.json') 
   .then(response => response.json())
