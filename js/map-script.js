@@ -46,7 +46,7 @@ fetch('json/trees.json')
         <p style="margin: 10px 0;">This is a beautiful park.</p>
         <a href="#" style="color: blue; text-decoration: none;">Learn More</a>
       </div>
-    `);
+      `);
 
       markers.addLayer(parkMarker);
 
@@ -60,6 +60,16 @@ fetch('json/trees.json')
         park.trees.forEach(tree => {
           var treeMarker = L.marker(new L.LatLng(tree.tree_lat, tree.tree_long),{icon: greenIcon});
           treeMarker.bindPopup("<h3>" + tree.tree_name + "</h3>");
+
+          treeMarker.bindPopup(`
+          <div style="text-align: center; padding: 10px;">
+            <h2 style="margin-bottom: 5px;">${tree.tree_name}</h2>
+            <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
+            <p style="margin: 10px 0;">This is a beautiful park.</p>
+            <a href="#" style="color: blue; text-decoration: none;">Learn More</a>
+          </div>
+          `);
+
 
           markers.addLayer(treeMarker);
 
