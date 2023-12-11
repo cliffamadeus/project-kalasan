@@ -71,6 +71,8 @@ fetch('json/trees.json')
       }
     });
 
+    
+
     map.addLayer(markers);
   })
 

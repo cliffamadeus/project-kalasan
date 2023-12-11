@@ -9,22 +9,12 @@ html, body {
   padding: 0;
 }
 
-.search-bar {
-  top: 0;
-  left: 0;
-  width: auto;
-  padding: 10px;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
 .search-results {
   list-style: none;
   padding: 0;
   width: 100%;
   margin: 10px 0 0 0;
-  max-height: 90vh; 
+  max-height: 50vh; 
   overflow-y: auto; 
 }
 
@@ -46,6 +36,17 @@ html, body {
 .search-card p {
   margin: 5px 0;
   font-size: 14px;
+}
+
+.map-search-bar {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  z-index: 1000;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 
