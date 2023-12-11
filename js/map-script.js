@@ -130,6 +130,13 @@ fetch('json/trees.json')
             cardItem.appendChild(cardContent);
   
             searchResults.appendChild(cardItem);
+
+            cardItem.addEventListener('click', function () {
+              const selectedTree = searchData.find(area => area.area_name === result.area_name)
+                .area_trees.find(tree => tree.tree_name === result.tree_name);
+
+              map.flyTo([selectedTree.tree_lat, selectedTree.tree_long], 16); // Fly to the selected tree marker with zoom level 15
+            });
           });
         }
       }
