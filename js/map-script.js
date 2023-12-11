@@ -6,7 +6,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 var markers = L.markerClusterGroup();
 
-var greenIcon = L.icon({
+var treeIcon = L.icon({
   iconUrl: './img/tree.png',
   iconSize:     [40, 40], 
   shadowSize:   [40, 40], 
@@ -17,11 +17,11 @@ var greenIcon = L.icon({
 
 var areaIcon = L.icon({
   iconUrl: './img/area-icon.png',
-  iconSize:     [40, 40], 
+  iconSize:     [50, 50], 
   shadowSize:   [40, 40], 
-  iconAnchor:   [20, 40], 
-  shadowAnchor: [2, 40], 
-  popupAnchor:  [0, -40]  
+  iconAnchor:   [30, 50], 
+  shadowAnchor: [3, 50], 
+  popupAnchor:  [0, -50]  
 });
 
 fetch('json/trees.json') 
@@ -50,7 +50,7 @@ fetch('json/trees.json')
       // Add markers for area_trees within the area
       if (area.area_trees && area.area_trees.length > 0) {
         area.area_trees.forEach(tree => {
-          var treeMarker = L.marker(new L.LatLng(tree.tree_lat, tree.tree_long),{icon: greenIcon});
+          var treeMarker = L.marker(new L.LatLng(tree.tree_lat, tree.tree_long),{icon: treeIcon});
           treeMarker.bindPopup("<h3>" + tree.tree_name + "</h3>");
 
           treeMarker.bindPopup(`
