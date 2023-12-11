@@ -4,11 +4,6 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributor | custom by CAFE'
 }).addTo(map);
 
-var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'});
-
-
 var markers = L.markerClusterGroup();
 
 var greenIcon = L.icon({
@@ -35,7 +30,7 @@ fetch('json/trees.json')
   .then(data => {
     data.forEach(area => {
       var area_name = area.area_name;
-      var areaMarker = L.marker(new L.LatLng(area.lat, area.long), {icon: areaIcon});
+      var areaMarker = L.marker(new L.LatLng(area.area_lat, area.area_lng), {icon: areaIcon});
 
       areaMarker.bindPopup(`
       <div style="text-align: center; padding: 10px;">
@@ -50,7 +45,7 @@ fetch('json/trees.json')
 
       areaMarker.on('click', function (ev) {
         var latlng = map.mouseEventToLatLng(ev.originalEvent);
-        console.log(latlng.lat + ', ' + latlng.lng);
+        console.log(latlng.area_lat + ', ' + latlng.area_lng);
       });
 
       // Add markers for trees within the area
