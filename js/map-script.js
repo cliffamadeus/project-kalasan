@@ -91,11 +91,12 @@ fetch('json/trees.json')
       searchInput.addEventListener('input', function () {
         const searchTerm = searchInput.value.toLowerCase();
   
-        const flatResults = searchData.flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name })));
-  
-        const filteredResults = flatResults.filter(result => result.tree_name.toLowerCase().includes(searchTerm));
-  
+        const filteredResults = searchData
+        .flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name, tree_planted_by: tree.tree_planted_by })))
+        .filter(result => result.tree_name.toLowerCase().includes(searchTerm) || result.tree_planted_by.toLowerCase().includes(searchTerm));
+      
         displaySearchResults(filteredResults);
+      
       });
   
       function displaySearchResults(results) {
