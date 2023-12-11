@@ -11,6 +11,17 @@ fetch('./json/trees.json')
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
 
+    performSearch('');
+
+    function performSearch(searchTerm) {
+      // Flatten the tree data for easier searching
+      const flatResults = searchData.flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name })));
+
+      const filteredResults = flatResults.filter(result => result.tree_name.toLowerCase().includes(searchTerm));
+
+      displaySearchResults(filteredResults);
+    }
+
     searchInput.addEventListener('input', function () {
       const searchTerm = searchInput.value.toLowerCase();
 
