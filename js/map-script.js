@@ -51,13 +51,13 @@ fetch('json/trees.json')
       if (area.area_trees && area.area_trees.length > 0) {
         area.area_trees.forEach(tree => {
           var treeMarker = L.marker(new L.LatLng(tree.tree_lat, tree.tree_long),{icon: treeIcon});
-          treeMarker.bindPopup("<h3>" + tree.tree_name + "</h3>");
-
+         
           treeMarker.bindPopup(`
           <div padding: 10px;">
             <h2 style="margin-bottom: 5px;">${tree.tree_name}</h2>
             <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
             <p style="margin: 10px 0;">Planted by: ${tree.tree_planted_by}</p>
+            <p style="margin: 10px 0;">Planted on: ${tree.tree_created_date}</p>
           </div>
           `);
 
