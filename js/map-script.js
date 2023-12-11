@@ -47,7 +47,6 @@ fetch('json/trees.json')
         console.log(latlng.area_lat + ', ' + latlng.area_lng);
       });
 
-      // Add markers for area_trees within the area
       if (area.area_trees && area.area_trees.length > 0) {
         area.area_trees.forEach(tree => {
           var treeMarker = L.marker(new L.LatLng(tree.tree_lat, tree.tree_long),{icon: treeIcon});
@@ -135,7 +134,7 @@ fetch('json/trees.json')
               const selectedTree = searchData.find(area => area.area_name === result.area_name)
                 .area_trees.find(tree => tree.tree_name === result.tree_name);
 
-              map.flyTo([selectedTree.tree_lat, selectedTree.tree_long], 17,{ duration: .25 }); // Fly to the selected tree marker with zoom level 15
+              map.flyTo([selectedTree.tree_lat, selectedTree.tree_long], 17,{ duration: .25 });
             });
           });
         }
