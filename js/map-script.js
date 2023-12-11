@@ -123,9 +123,13 @@ fetch('json/trees.json')
             const plantedBy = document.createElement('p');
             plantedBy.textContent = `Planted by : ${result.tree_planted_by}`;
 
+            const plantedOn = document.createElement('p');
+            plantedOn.textContent = `${result.tree_created_date}`;
+
             cardContent.appendChild(plantedBy);
             cardContent.appendChild(treeName);
             cardContent.appendChild(areaName);
+            cardContent.appendChild(plantedOn);
             
             cardItem.appendChild(cardContent);
   
