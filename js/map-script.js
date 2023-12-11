@@ -117,15 +117,15 @@ fetch('json/trees.json')
             treeName.textContent = result.tree_name;
   
             const areaName = document.createElement('p');
-            areaName.textContent = `Found in: ${result.area_name}`;
+            areaName.textContent = `Found in : ${result.area_name}`;
   
             const plantedBy = document.createElement('p');
-            plantedBy.textContent = `Planted by: ${result.tree_planted_by}`;
-  
+            plantedBy.textContent = `Planted by : ${result.tree_planted_by}`;
+
+            cardContent.appendChild(plantedBy);
             cardContent.appendChild(treeName);
             cardContent.appendChild(areaName);
-            cardContent.appendChild(plantedBy);
-  
+            
             cardItem.appendChild(cardContent);
   
             searchResults.appendChild(cardItem);
