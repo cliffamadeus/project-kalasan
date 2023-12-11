@@ -31,9 +31,28 @@ fetch('./json/trees.json')
         searchResults.appendChild(noResultsItem);
       } else {
         results.forEach(result => {
-          const resultItem = document.createElement('li');
-          resultItem.textContent = `${result.tree_name} in ${result.area_name}`;
-          searchResults.appendChild(resultItem);
+          const cardItem = document.createElement('li');
+          cardItem.classList.add('search-card');
+
+          const cardContent = document.createElement('div');
+          cardContent.classList.add('search-card-content');
+
+          const treeName = document.createElement('h3');
+          treeName.textContent = result.tree_name;
+
+          const areaName = document.createElement('p');
+          areaName.textContent = `Found in: ${result.area_name}`;
+
+          const plantedBy = document.createElement('p');
+          plantedBy.textContent = `Planted by: ${result.tree_planted_by}`;
+
+          cardContent.appendChild(treeName);
+          cardContent.appendChild(areaName);
+          cardContent.appendChild(plantedBy);
+
+          cardItem.appendChild(cardContent);
+
+          searchResults.appendChild(cardItem);
         });
       }
     }
