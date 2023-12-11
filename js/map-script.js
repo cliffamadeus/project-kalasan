@@ -12,13 +12,12 @@ var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
 var markers = L.markerClusterGroup();
 
 var greenIcon = L.icon({
-  iconUrl: './img/leaf-green.png',
-  shadowUrl: './img/leaf-shadow.png',
-  iconSize:     [38, 95], 
-  shadowSize:   [50, 64], 
-  iconAnchor:   [22, 94], 
-  shadowAnchor: [4, 62],  
-  popupAnchor:  [-3, -76]
+  iconUrl: './img/tree.png',
+  iconSize:     [40, 40], 
+  shadowSize:   [40, 40], 
+  iconAnchor:   [20, 40], 
+  shadowAnchor: [2, 40], 
+  popupAnchor:  [0, -40]  
 });
 
 var areaIcon = L.icon({
