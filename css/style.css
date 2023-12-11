@@ -9,9 +9,6 @@ html, body {
   padding: 0;
 }
 
-
-/* Add these styles to your existing CSS */
-/* Add these styles to your existing CSS */
 .search-bar {
   top: 0;
   left: 0;
@@ -26,11 +23,10 @@ html, body {
   list-style: none;
   padding: 0;
   margin: 10px 0 0 0;
-  max-height: 70vh; /* Set the maximum height as a percentage of the viewport height */
-  overflow-y: auto; /* Add vertical scrolling when content exceeds the maximum height */
+  max-height: 90vh; 
+  overflow-y: auto; 
 }
 
-/* Your existing search card styles */
 .search-card {
   border: 1px solid #ddd;
   border-radius: 8px;
