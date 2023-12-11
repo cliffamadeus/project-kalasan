@@ -44,7 +44,7 @@ fetch('./json/trees.json')
           const cardContent = document.createElement('div');
           cardContent.classList.add('search-card-content');
 
-          const treeName = document.createElement('h3');
+          const treeName = document.createElement('h5');
           treeName.textContent = result.tree_name;
 
           const areaName = document.createElement('p');

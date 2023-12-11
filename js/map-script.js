@@ -33,7 +33,7 @@ fetch('json/trees.json')
 
       areaMarker.bindPopup(`
       <div padding: 10px;">
-        <h2 style="margin-bottom: 5px;">${area_name}</h2>
+        <h3 style="margin-bottom: 5px;">${area_name}</h3>
         <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
         <p style="margin: 10px 0;">This is a beautiful area.</p>
         <a href="#" style="color: blue; text-decoration: none;">Learn More</a>
@@ -54,7 +54,7 @@ fetch('json/trees.json')
          
           treeMarker.bindPopup(`
           <div padding: 10px;">
-            <h2 style="margin-bottom: 5px;">${tree.tree_name}</h2>
+            <h3 style="margin-bottom: 5px;">${tree.tree_name}</h3>
             <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
             <p style="margin: 10px 0;">Planted by: ${tree.tree_planted_by}</p>
             <p style="margin: 10px 0;">Planted on: ${tree.tree_created_date}</p>
@@ -70,6 +70,8 @@ fetch('json/trees.json')
         });
       }
     });
+
+    
 
     map.addLayer(markers);
   })
