@@ -1,8 +1,8 @@
 [
     {
       "area_name": "Kisolon Tree Park",
-      "lat": 8.335444,
-      "long": 124.972245,
+      "area_lat": 8.335002,
+      "area_lng": 124.972789,
       "trees": [
         {
           "tree_name": "Gmelina",
