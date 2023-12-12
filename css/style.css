@@ -45,6 +45,13 @@ html, body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+
+.map-search-reset{
+  color: grey;
+  text-align: center;
+  font-size: 14px;
+}
+
 .map-search-bar {
   position: absolute;
   top: 50px;
@@ -101,19 +108,28 @@ html, body {
 
 
 @media screen and (max-width: 600px) {
-  .map-search-results,.map-reset-btn,.map-preload {
+  .map-search-results,
+  .map-reset-btn,
+  .map-preload,
+  .map-search-reset {
     font-size: 10px;
   }
 }
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
-  .map-search-results,.map-reset-btn,.map-preload {
+  .map-search-results,
+  .map-reset-btn,
+  .map-preload,
+  .map-search-reset {
     font-size: 14px;
   }
 }
 
 @media screen and (min-width: 1025px) {
-  .map-search-results,.map-reset-btn,.map-preload {
+  .map-search-results,
+  .map-reset-btn,
+  .map-preload,
+  .map-search-reset {
     font-size: 15px;
   }
 }

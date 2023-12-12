@@ -119,7 +119,7 @@ fetch('json/trees.json')
       noResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;">No results found</h5>';
 
       const initialResultsItem = document.createElement('li');
-      initialResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;">Checkout our Open Database</h5>';
+      initialResultsItem.innerHTML = '<p class="map-search-reset">Checkout our Open Database</h4>';
       searchResults.appendChild(initialResultsItem);
 
       searchInput.addEventListener('input', function () {
