@@ -9,17 +9,17 @@ html, body {
   padding: 0;
 }
 
-.map-preload{
+.map-preload {
   position: fixed;
   bottom: 50px;
-  left: 50px;
+  left: 10px;
   z-index: 1000;
   background-color: white;
-  width: 20vw;
-  height: 20vw;
+  width: 30vw; 
+  height: 40%; 
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 25px;
+  padding: 1vw; 
 }
 
 
@@ -86,20 +86,25 @@ html, body {
   background-color: #f0f0f0; 
 }
 
+.map-preload-item:hover{
+  background-color: #f0f0f0; 
+}
+
+
 @media screen and (max-width: 600px) {
-  .map-search-results,.map-reset-btn {
+  .map-search-results,.map-reset-btn,.map-preload {
     font-size: 10px;
   }
 }
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
-  .map-search-results,.map-reset-btn {
+  .map-search-results,.map-reset-btn,.map-preload {
     font-size: 14px;
   }
 }
 
 @media screen and (min-width: 1025px) {
-  .map-search-results,.map-reset-btn {
+  .map-search-results,.map-reset-btn,.map-preload {
     font-size: 15px;
   }
 }
