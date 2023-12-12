@@ -112,7 +112,7 @@ fetch('json/trees.json')
     //Search
       searchData = data;
 
-      const searchInput = document.getElementById('searchInput');
+      const searchInputBar = document.getElementById('searchInputBar');
       const searchResults = document.getElementById('searchResults');
      
       const noResultsItem = document.createElement('li');
@@ -122,8 +122,8 @@ fetch('json/trees.json')
       onLoadResultsItem.innerHTML = '<p class="map-search-reset">Checkout our Open Database</h4>';
       searchResults.appendChild(onLoadResultsItem);
 
-      searchInput.addEventListener('input', function () {
-        const searchTerm = searchInput.value.toLowerCase();
+      searchInputBar.addEventListener('input', function () {
+        const searchTerm = searchInputBar.value.toLowerCase();
 
         if (!searchTerm) {
           searchResults.innerHTML = '';
