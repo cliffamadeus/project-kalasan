@@ -35,10 +35,12 @@ fetch('json/trees.json')
   .then(data => {
     data.forEach(area => {
 
-      const preloadContainer = document.getElementById('preloadContainer');
-      preloadContainer.innerHTML = generateHTMLContent(data);
+      
 
     //Preload
+    const preloadContainer = document.getElementById('preloadContainer');
+    preloadContainer.innerHTML = generateHTMLContent(data);
+
       function generateHTMLContent(data) {
         return data.map(area => {
           const areaHTML = `
@@ -51,7 +53,6 @@ fetch('json/trees.json')
                     ${tree.tree_planted_by} has recently planted a tree
                     <br>Area: ${area.area_name} 
                   </span>
-                     
                   </div>
                   <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
                 `)
