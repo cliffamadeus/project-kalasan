@@ -64,14 +64,20 @@ html, body {
   right: 10px;
   z-index: 1000;
   background-color: white;
-  padding: 5px;
-  border-radius: 1px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 30vw; 
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30vw;
   overflow-y: auto;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   scroll-behavior: smooth;
+  transition: transform 0.3s ease-in-out;
 }
+
+.map-search-bar:hover {
+  transform: scale(1.01);
+}
+
 
 .map-search-results {
   list-style: none;
