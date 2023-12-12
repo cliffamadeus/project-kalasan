@@ -11,13 +11,15 @@ html, body {
 
 .map-reset-btn {
   position: fixed;
-  top: 50px; 
-  left: 50px; 
+  top: 50px;
+  left: 50px;
   z-index: 1000;
   background-color: white;
   width: 70px;
   overflow-y: auto;
   overflow-x: hidden;
+  border-inline: 5px solid rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .map-search-bar {
@@ -32,10 +34,8 @@ html, body {
   width: 30vw; 
   overflow-y: auto;
   overflow-x: hidden; 
-
   scroll-behavior: smooth;
 }
-
 
 .map-search-results {
   list-style: none;
@@ -45,7 +45,6 @@ html, body {
   max-height: 60vh;
   overflow-y: auto;
   overflow-x: hidden; 
-
   scroll-behavior: smooth;
 }
 
@@ -73,21 +72,18 @@ html, body {
   background-color: #f0f0f0; 
 }
 
-/* Adjust font size and h values for small screens */
 @media screen and (max-width: 600px) {
   .map-search-results,.map-reset-btn {
     font-size: 10px;
   }
 }
 
-/* Adjust font size and h values for medium screens */
 @media screen and (min-width: 601px) and (max-width: 1024px) {
   .map-search-results,.map-reset-btn {
     font-size: 14px;
   }
 }
 
-/* Adjust font size and h values for large screens */
 @media screen and (min-width: 1025px) {
   .map-search-results,.map-reset-btn {
     font-size: 15px;
