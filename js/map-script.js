@@ -132,7 +132,7 @@ fetch('json/trees.json')
           results.forEach(result => {
             const cardItem = document.createElement('li');        
             cardItem.innerHTML = `
-              <div style="padding:5px;">
+              <div class="map-search-item" style="padding:5px;">
                 <h5>${result.tree_name}</h5>
                 <p>Found in: ${result.area_name}</p>
                 <p>Planted by: ${result.tree_planted_by}</p>

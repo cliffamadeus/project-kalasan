@@ -69,11 +69,9 @@ html, body {
   scrollbar-color: transparent transparent;
 }
 
-.map-search-results li:hover {
+.map-search-item:hover{
   background-color: #f0f0f0; 
 }
-
-
 
 /* Adjust font size and h values for small screens */
 @media screen and (max-width: 600px) {
