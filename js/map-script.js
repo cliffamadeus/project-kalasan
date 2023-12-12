@@ -105,16 +105,13 @@ fetch('json/trees.json')
         
         results.forEach(result => {
 
-          const cardItem = document.createElement('li');
-          cardItem.classList.add('search-card');
-
+          const cardItem = document.createElement('li');        
           cardItem.innerHTML = `
-            <div class="search-card-content">
               <h5>${result.tree_name}</h5>
               <p>Found in: ${result.area_name}</p>
               <p>Planted by: ${result.tree_planted_by}</p>
               <p>${result.tree_created_date}</p>
-            </div>
+              <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
           `;
 
           searchResults.appendChild(cardItem);

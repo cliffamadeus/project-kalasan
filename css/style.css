@@ -9,7 +9,6 @@ html, body {
   padding: 0;
 }
 
-
 .map-search-bar {
   position: absolute;
   top: 50px;
@@ -21,33 +20,15 @@ html, body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.search-results {
+.map-search-results {
   list-style: none;
   padding: 0;
   width: 100%;
   margin: 10px 0 0 0;
-  max-height: 60vh; 
-  overflow-y: auto; 
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
-.search-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.search-card-content {
-  padding: 10px;
-}
-
-.search-card h3 {
-  margin: 0;
-}
-
-.search-card p {
-  margin: 5px 0;
-  font-size: 14px;
-}
 
 
 
