@@ -103,30 +103,18 @@ fetch('json/trees.json')
       function displaySearchResults(results) {
         
         results.forEach(result => {
+
           const cardItem = document.createElement('li');
           cardItem.classList.add('search-card');
 
-          const cardContent = document.createElement('div');
-          cardContent.classList.add('search-card-content');
-
-          const treeName = document.createElement('h5');
-          treeName.textContent = result.tree_name;
-
-          const areaName = document.createElement('p');
-          areaName.textContent = `Found in : ${result.area_name}`;
-
-          const plantedBy = document.createElement('p');
-          plantedBy.textContent = `Planted by : ${result.tree_planted_by}`;
-
-          const plantedOn = document.createElement('p');
-          plantedOn.textContent = `${result.tree_created_date}`;
-
-          cardContent.appendChild(plantedBy);
-          cardContent.appendChild(treeName);
-          cardContent.appendChild(areaName);
-          cardContent.appendChild(plantedOn);
-          
-          cardItem.appendChild(cardContent);
+          cardItem.innerHTML = `
+            <div class="search-card-content">
+              <h5>${result.tree_name}</h5>
+              <p>Found in: ${result.area_name}</p>
+              <p>Planted by: ${result.tree_planted_by}</p>
+              <p>${result.tree_created_date}</p>
+            </div>
+          `;
 
           searchResults.appendChild(cardItem);
 
