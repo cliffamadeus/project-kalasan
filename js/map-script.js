@@ -53,6 +53,7 @@ fetch('json/trees.json')
          
           treeMarker.bindPopup(`
           <div padding: 10px;">
+            <p style="margin: 10px 0;"class="text-secondary">Tree ID: ${tree.tree_id}</p>
             <h3 style="margin-bottom: 5px;">${tree.tree_name}</h3>
             <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
             <p style="margin: 10px 0;">Planted by: ${tree.tree_planted_by}</p>
