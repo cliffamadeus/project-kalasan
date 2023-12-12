@@ -1,8 +1,14 @@
-const map = L.map('cluster-map').setView([8.011424, 125.279184], 5);
+const map = L.map('cluster-map').setView([12.911025, 122.479184], 6);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributor | custom by CAFE'
 }).addTo(map);
+
+// Reset Zoom Button Click Event
+document.getElementById('resetZoomButton').addEventListener('click', function () {
+  // Set the map's zoom and center to the initial state
+  map.setView([12.911025, 122.479184], 6);
+});
 
 const markers = L.markerClusterGroup();
 
@@ -28,6 +34,34 @@ fetch('json/trees.json')
   .then(response => response.json())
   .then(data => {
     data.forEach(area => {
+
+      const preloadContainer = document.getElementById('preloadContainer');
+      preloadContainer.innerHTML = generateHTMLContent(data);
+
+    //Preload
+      function generateHTMLContent(data) {
+        return data.map(area => {
+          const areaHTML = `
+            <div >
+                ${area.area_trees.slice(0, 4).map(tree => 
+                  `
+                  <div class="card map-preload-item">
+                    <p>
+                      <a href="">${tree.tree_id}</a>
+                      <br>${tree.tree_planted_by} has recently plated a tree
+                      <br>Area: ${area.area_name} 
+                    </p>
+                  </div>
+                  <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
+                `)
+                .join('')}
+            </div>
+          `;
+          return areaHTML;
+        }).join('');
+      }
+
+    //Markers
       const area_name = area.area_name;
       const areaMarker = L.marker(new L.LatLng(area.area_lat, area.area_lng), {icon: areaIcon});
 
@@ -74,31 +108,26 @@ fetch('json/trees.json')
 
       map.addLayer(markers);
 
+
+    //Search
       searchData = data;
 
       const searchInput = document.getElementById('searchInput');
       const searchResults = document.getElementById('searchResults');
-      /*
-      performSearch('');
-  
-      function performSearch(searchTerm) {
-  
-        const flatResults = searchData.flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name })));
-  
-        const filteredResults = flatResults.filter(result => result.tree_name.toLowerCase().includes(searchTerm));
-  
-        displaySearchResults(filteredResults);
-      }*/
+     
       const noResultsItem = document.createElement('li');
-      noResultsItem.textContent = 'No results found';
-      searchResults.appendChild(noResultsItem);
+      noResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;">No results found</h5>';
+
+      const initialResultsItem = document.createElement('li');
+      initialResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;">Checkout our Open Database</h5>';
+      searchResults.appendChild(initialResultsItem);
 
       searchInput.addEventListener('input', function () {
         const searchTerm = searchInput.value.toLowerCase();
 
         if (!searchTerm) {
           searchResults.innerHTML = '';
-          searchResults.appendChild(noResultsItem);
+          searchResults.appendChild(initialResultsItem);
           return;
         }
 
@@ -123,7 +152,7 @@ fetch('json/trees.json')
           results.forEach(result => {
             const cardItem = document.createElement('li');        
             cardItem.innerHTML = `
-              <div style="padding:5px;">
+              <div class="map-search-item" style="padding:5px;">
                 <h5>${result.tree_name}</h5>
                 <p>Found in: ${result.area_name}</p>
                 <p>Planted by: ${result.tree_planted_by}</p>
@@ -145,7 +174,7 @@ fetch('json/trees.json')
         }
       }
   })
-
+  
   .catch(error => {
     console.error('Error loading JSON:', error);
   });

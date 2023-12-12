@@ -9,6 +9,42 @@ html, body {
   padding: 0;
 }
 
+.map-preload {
+  position: fixed;
+  bottom: 60%;
+  left: 10px;
+  z-index: 1000;
+  background-color: white;
+  width: 30vw; 
+  height: 40vw; 
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1vw; 
+  max-height:60vw;
+}
+
+.map-preload::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar */
+}
+
+.map-preload-item{
+  padding:10px;
+}
+
+
+.map-reset-btn {
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  z-index: 1000;
+  background-color: white;
+  width: 70px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-inline: 5px solid rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
 .map-search-bar {
   position: absolute;
   top: 50px;
@@ -21,10 +57,8 @@ html, body {
   width: 30vw; 
   overflow-y: auto;
   overflow-x: hidden; 
-
   scroll-behavior: smooth;
 }
-
 
 .map-search-results {
   list-style: none;
@@ -34,7 +68,6 @@ html, body {
   max-height: 60vh;
   overflow-y: auto;
   overflow-x: hidden; 
-
   scroll-behavior: smooth;
 }
 
@@ -58,29 +91,29 @@ html, body {
   scrollbar-color: transparent transparent;
 }
 
-.map-search-results li:hover {
+.map-search-item:hover{
+  background-color: #f0f0f0; 
+}
+
+.map-preload-item:hover{
   background-color: #f0f0f0; 
 }
 
 
-
-/* Adjust font size and h values for small screens */
 @media screen and (max-width: 600px) {
-  .map-search-results {
+  .map-search-results,.map-reset-btn,.map-preload {
     font-size: 10px;
   }
 }
 
-/* Adjust font size and h values for medium screens */
 @media screen and (min-width: 601px) and (max-width: 1024px) {
-  .map-search-results {
+  .map-search-results,.map-reset-btn,.map-preload {
     font-size: 14px;
   }
 }
 
-/* Adjust font size and h values for large screens */
 @media screen and (min-width: 1025px) {
-  .map-search-results {
+  .map-search-results,.map-reset-btn,.map-preload {
     font-size: 15px;
   }
 }
