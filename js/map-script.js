@@ -154,25 +154,25 @@ fetch('json/trees.json')
         }
       }
 
-      // Preload records into a div with the ID 'preloadContainer'
       const preloadContainer = document.getElementById('preloadContainer');
       preloadContainer.innerHTML = generateHTMLContent(data);
       
-
       function generateHTMLContent(data) {
         return data.map(area => {
           const areaHTML = `
-            <div>
-              <h2>${area.area_name}</h2>
-              <p>Created Date: ${area.area_created_date}</p>
-              <ul>
-                ${area.area_trees.map(tree => `<li>${tree.tree_name} - Planted by: ${tree.tree_planted_by}</li>`).join('')}
+            <div >
+              <p>Planted Date: ${area.area_created_date}</p>
+              <ul class="map-search-item">
+                ${area.area_trees.map(tree => 
+                  `<li>${tree.tree_name} - Planted by: ${tree.tree_planted_by}</li>`).join('')}
               </ul>
             </div>
           `;
           return areaHTML;
         }).join('');
       }
+
+
   })
 
   
