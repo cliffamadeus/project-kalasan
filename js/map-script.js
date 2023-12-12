@@ -1,65 +1,33 @@
 const map = L.map('cluster-map').setView([12.911025, 122.479184], 6);
+const markers = L.markerClusterGroup();
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributor | custom by CAFE'
 }).addTo(map);
 
-// Reset Zoom Button Click Event
 document.getElementById('resetZoomButton').addEventListener('click', function () {
-  // Set the map's zoom and center to the initial state
   map.setView([12.911025, 122.479184], 6);
 });
 
-const markers = L.markerClusterGroup();
+function createIcon(iconUrl, iconSize, shadowSize, iconAnchor, shadowAnchor, popupAnchor) {
+  return L.icon({
+    iconUrl: iconUrl,
+    iconSize: iconSize,
+    shadowSize: shadowSize,
+    iconAnchor: iconAnchor,
+    shadowAnchor: shadowAnchor,
+    popupAnchor: popupAnchor
+  });
+}
 
-const treeIcon = L.icon({
-  iconUrl: './img/tree.png',
-  iconSize:     [40, 40], 
-  shadowSize:   [40, 40], 
-  iconAnchor:   [20, 40], 
-  shadowAnchor: [2, 40], 
-  popupAnchor:  [0, -40]  
-});
+const treeIcon = createIcon('./img/tree.png', [40, 40], [40, 40], [20, 40], [2, 40], [0, -40]);
 
-const areaIcon = L.icon({
-  iconUrl: './img/area-icon.png',
-  iconSize:     [50, 50], 
-  shadowSize:   [40, 40], 
-  iconAnchor:   [30, 50], 
-  shadowAnchor: [3, 50], 
-  popupAnchor:  [0, -50]  
-});
- 
+const areaIcon = createIcon('./img/area-icon.png', [50, 50], [40, 40], [30, 50], [3, 50], [0, -50]);
+
 fetch('json/trees.json') 
   .then(response => response.json())
   .then(data => {
     data.forEach(area => {
-
-    //Preload
-    const recentRecordsContainer = document.getElementById('recentRecordsContainer');
-    recentRecordsContainer.innerHTML = generateHTMLContent(data);
-
-      function generateHTMLContent(data) {
-        return data.map(area => {
-          const areaHTML = `
-            <div >
-                ${area.area_trees.slice(0, 3).map(tree => 
-                  `
-                  <div class="card map-preload-item">
-                  <span style="display: inline-block;">
-                    <a href="${tree.tree_id.trim()}" class="map-recent-records-header">${tree.tree_id.trim()}</a>
-                    ${tree.tree_planted_by} has recently planted a tree
-                    <br>Area: ${area.area_name} 
-                  </span>
-                  </div>
-                  <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
-                `)
-                .join('')}
-            </div>
-          `;
-          return areaHTML;
-        }).join('');
-      }
 
     //Markers
       const area_name = area.area_name;
@@ -108,7 +76,31 @@ fetch('json/trees.json')
 
       map.addLayer(markers);
 
+    //Preload
+    const recentRecordsContainer = document.getElementById('recentRecordsContainer');
+    recentRecordsContainer.innerHTML = generateHTMLContent(data);
 
+      function generateHTMLContent(data) {
+        return data.map(area => {
+          const areaHTML = `
+            <div >
+                ${area.area_trees.slice(0, 3).map(tree => 
+                  `
+                  <div class="card map-preload-item">
+                  <span style="display: inline-block;">
+                    <a href="${tree.tree_id.trim()}" class="map-recent-records-header">${tree.tree_id.trim()}</a>
+                    ${tree.tree_planted_by} has recently planted a tree
+                    <br>Area: ${area.area_name} 
+                  </span>
+                  </div>
+                  <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
+                `)
+                .join('')}
+            </div>
+          `;
+          return areaHTML;
+        }).join('');
+      }
     //Search
       searchData = data;
 
