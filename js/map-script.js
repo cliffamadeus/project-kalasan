@@ -43,7 +43,7 @@ fetch('json/trees.json')
         return data.map(area => {
           const areaHTML = `
             <div >
-                ${area.area_trees.map(tree => 
+                ${area.area_trees.slice(0, 4).map(tree => 
                   `
                   <div class="card map-preload-item">
                     <p>
@@ -59,9 +59,6 @@ fetch('json/trees.json')
           `;
           return areaHTML;
         }).join('');
-
-
-        
       }
 
     //Markers
