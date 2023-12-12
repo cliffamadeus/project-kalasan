@@ -9,6 +9,17 @@ html, body {
   padding: 0;
 }
 
+.map-reset-btn {
+  position: fixed;
+  bottom: 40px; 
+  left: 10px; 
+  z-index: 1000;
+  background-color: white;
+  width: 12vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .map-search-bar {
   position: absolute;
   top: 50px;
@@ -66,21 +77,21 @@ html, body {
 
 /* Adjust font size and h values for small screens */
 @media screen and (max-width: 600px) {
-  .map-search-results {
+  .map-search-results,.map-reset-btn {
     font-size: 10px;
   }
 }
 
 /* Adjust font size and h values for medium screens */
 @media screen and (min-width: 601px) and (max-width: 1024px) {
-  .map-search-results {
+  .map-search-results,.map-reset-btn {
     font-size: 14px;
   }
 }
 
 /* Adjust font size and h values for large screens */
 @media screen and (min-width: 1025px) {
-  .map-search-results {
+  .map-search-results,.map-reset-btn {
     font-size: 15px;
   }
 }
