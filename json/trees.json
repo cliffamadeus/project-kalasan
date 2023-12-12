@@ -1,5 +1,6 @@
 [
   {
+    "area_id": "0001",
     "area_name": "Kisolon Tree Park",
     "area_lat": 8.335002,
     "area_lng": 124.972789,
@@ -7,6 +8,7 @@
     "area_modified_date": "11-Dec-2023",
     "area_trees": [
       {
+        "tree_id": "0001",
         "tree_name": "Tanguilan",
         "tree_lat": 8.335048,
         "tree_long": 124.971845,
@@ -16,6 +18,7 @@
 
       },
       {
+        "tree_id": "0002",
         "tree_name": "Mahogany",
         "tree_lat": 8.335082,
         "tree_long": 124.971845,
