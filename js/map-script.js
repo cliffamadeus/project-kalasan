@@ -96,15 +96,19 @@ fetch('json/trees.json')
         displaySearchResults(filteredResults);
       }*/
       const noResultsItem = document.createElement('li');
-      noResultsItem.textContent = 'No results found';
-      searchResults.appendChild(noResultsItem);
+      noResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;">No results found</h5>';
+  
+
+      const initialResultsItem = document.createElement('li');
+      initialResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;" disabled>Checkout our Open Database</h5>';
+      searchResults.appendChild(initialResultsItem);
 
       searchInput.addEventListener('input', function () {
         const searchTerm = searchInput.value.toLowerCase();
 
         if (!searchTerm) {
           searchResults.innerHTML = '';
-          searchResults.appendChild(noResultsItem);
+          searchResults.appendChild(initialResultsItem);
           return;
         }
 
