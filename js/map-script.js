@@ -89,15 +89,19 @@ fetch('json/trees.json')
   
         displaySearchResults(filteredResults);
       }*/
-  
+      const noResultsItem = document.createElement('li');
+      noResultsItem.textContent = 'No results found';
+      searchResults.appendChild(noResultsItem);
+
       searchInput.addEventListener('input', function () {
         const searchTerm = searchInput.value.toLowerCase();
 
         if (!searchTerm) {
           searchResults.innerHTML = '';
+          searchResults.appendChild(noResultsItem);
           return;
         }
-  
+
         const filteredResults = searchData
         .flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name, tree_planted_by: tree.tree_planted_by })))
         .filter(result => result.tree_name.toLowerCase().includes(searchTerm) || result.tree_planted_by.toLowerCase().includes(searchTerm));
@@ -112,8 +116,6 @@ fetch('json/trees.json')
   
         if (results.length === 0) {
 
-          const noResultsItem = document.createElement('li');
-          noResultsItem.textContent = 'No results found';
           searchResults.appendChild(noResultsItem);
           
         } else {
