@@ -11,15 +11,21 @@ html, body {
 
 .map-preload {
   position: fixed;
-  bottom: 40%;
+  bottom: 60%;
   left: 10px;
   z-index: 1000;
   background-color: white;
   width: 30vw; 
-  height: 40%; 
+  height: 30vw; 
   overflow-y: auto;
   overflow-x: hidden;
   padding: 1vw; 
+  max-height:30vw;
+  
+}
+
+.map-preload::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar */
 }
 
 .map-preload-item{
