@@ -107,11 +107,13 @@ fetch('json/trees.json')
 
           const cardItem = document.createElement('li');        
           cardItem.innerHTML = `
+            <div style="padding:5px;">
               <h5>${result.tree_name}</h5>
               <p>Found in: ${result.area_name}</p>
               <p>Planted by: ${result.tree_planted_by}</p>
               <p>${result.tree_created_date}</p>
               <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
+            </div>
           `;
 
           searchResults.appendChild(cardItem);
