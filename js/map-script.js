@@ -92,6 +92,11 @@ fetch('json/trees.json')
   
       searchInput.addEventListener('input', function () {
         const searchTerm = searchInput.value.toLowerCase();
+
+        if (!searchTerm) {
+          searchResults.innerHTML = '';
+          return;
+        }
   
         const filteredResults = searchData
         .flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name, tree_planted_by: tree.tree_planted_by })))
