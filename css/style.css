@@ -1,5 +1,5 @@
 #cluster-map {
-  height: 95vh; 
+  height: 100vh; 
   width: 100%; 
 }
 
@@ -11,7 +11,7 @@ html, body {
 
 .map-preload {
   position: fixed;
-  bottom: 60%;
+  bottom: 350px;
   left: 10px;
   z-index: 1000;
   background-color: white;
@@ -21,8 +21,38 @@ html, body {
   overflow-x: hidden;
   padding: 5px; 
   padding-top: 12px;
-  max-height:60vw;
+  max-height: 60vw;
 }
+
+
+/* Hide on small screens (phones) */
+@media (max-width: 576px) {
+  .map-preload {
+    display: none;
+  }
+}
+
+/* Hide on medium screens (tablets) */
+@media (min-width: 577px) and (max-width: 992px) {
+  .map-preload {
+    display: none;
+  }
+}
+
+/* Hide on large screens (small laptops/desktops) */
+@media (min-width: 993px) and (max-width: 1200px) {
+  .map-preload {
+    display: none;
+  }
+}
+
+/* Hide on extra-large screens (large desktops) */
+@media (min-width: 1201px) {
+  .map-preload {
+    display: none;
+  }
+}
+
 
 .map-preload::-webkit-scrollbar {
   display: none; /* Hide the scrollbar */
