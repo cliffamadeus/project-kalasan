@@ -150,8 +150,8 @@ fetch('json/trees.json')
         } else {
 
           results.forEach(result => {
-            const cardItem = document.createElement('li');        
-            cardItem.innerHTML = `
+            const searchCardItem = document.createElement('li');        
+            searchCardItem.innerHTML = `
               <div class="map-search-item" style="padding:5px;">
                 <h5>${result.tree_name}</h5>
                 <p>Found in: ${result.area_name}</p>
@@ -161,9 +161,9 @@ fetch('json/trees.json')
               </div>
             `;
   
-            searchResults.appendChild(cardItem);
+            searchResults.appendChild(searchCardItem);
   
-            cardItem.addEventListener('click', function () {
+            searchCardItem.addEventListener('click', function () {
               const selectedTree = searchData.find(area => area.area_name === result.area_name)
                 .area_trees.find(tree => tree.tree_name === result.tree_name);
   
