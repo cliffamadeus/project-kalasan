@@ -58,6 +58,7 @@ fetch('json/trees.json')
             <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
             <p style="margin: 10px 0;">Planted by: ${tree.tree_planted_by}</p>
             <p style="margin: 10px 0;">Planted on: ${tree.tree_created_date}</p>
+            <a href="#" style="color: blue; text-decoration: none;">View Details</a>
           </div>
           `);
 
