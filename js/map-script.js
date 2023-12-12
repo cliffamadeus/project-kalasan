@@ -46,11 +46,12 @@ fetch('json/trees.json')
                 ${area.area_trees.slice(0, 4).map(tree => 
                   `
                   <div class="card map-preload-item">
-                    <p>
-                      <a href="">${tree.tree_id}</a>
-                      <br>${tree.tree_planted_by} has recently plated a tree
-                      <br>Area: ${area.area_name} 
-                    </p>
+                  <span style="display: inline-block;">
+                    <a href="${tree.tree_id.trim()}" class="map-recent-records-header">${tree.tree_id.trim()}</a>
+                    ${tree.tree_planted_by} has recently planted a tree
+                    <br>Area: ${area.area_name} 
+                  </span>
+                     
                   </div>
                   <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
                 `)
