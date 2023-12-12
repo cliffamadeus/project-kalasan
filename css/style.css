@@ -16,11 +16,11 @@ html, body {
   z-index: 1000;
   background-color: white;
   width: 30vw; 
-  height: 40%; 
+  height: 40vw; 
   overflow-y: auto;
   overflow-x: hidden;
   padding: 1vw; 
-  max-height:30vw;
+  max-height:60vw;
 }
 
 .map-preload::-webkit-scrollbar {
