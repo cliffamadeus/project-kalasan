@@ -43,18 +43,18 @@ fetch('json/trees.json')
         return data.map(area => {
           const areaHTML = `
             <div >
-              <p>Planted Date: ${area.area_created_date}</p>
-              
                 ${area.area_trees.map(tree => 
                   `
-                  <div class="map-preload-item">
-                    <h5>${tree.tree_name}</h5>
-                    <p>Planted by: ${tree.tree_planted_by}</p>
+                  <div class="card map-preload-item">
+                    <p>
+                      <a href="">${tree.tree_id}</a>
+                      <br>${tree.tree_planted_by} has recently plated a tree
+                      <br>Area: ${area.area_name} 
+                    </p>
                   </div>
                   <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
                 `)
                 .join('')}
-             
             </div>
           `;
           return areaHTML;
