@@ -38,7 +38,7 @@ fetch('json/trees.json')
       const preloadContainer = document.getElementById('preloadContainer');
       preloadContainer.innerHTML = generateHTMLContent(data);
 
-      //Preload
+    //Preload
       function generateHTMLContent(data) {
         return data.map(area => {
           const areaHTML = `
@@ -64,7 +64,7 @@ fetch('json/trees.json')
         
       }
 
-      //Markers
+    //Markers
       const area_name = area.area_name;
       const areaMarker = L.marker(new L.LatLng(area.area_lat, area.area_lng), {icon: areaIcon});
 
@@ -112,7 +112,7 @@ fetch('json/trees.json')
       map.addLayer(markers);
 
 
-      //Search
+    //Search
       searchData = data;
 
       const searchInput = document.getElementById('searchInput');
