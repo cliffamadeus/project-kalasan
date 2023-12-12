@@ -9,6 +9,20 @@ html, body {
   padding: 0;
 }
 
+.map-preload{
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+  z-index: 1000;
+  background-color: white;
+  width: 20vw;
+  height: 20vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 25px;
+}
+
+
 .map-reset-btn {
   position: fixed;
   top: 50px;
