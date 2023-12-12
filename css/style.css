@@ -1,5 +1,5 @@
 #cluster-map {
-  height: 95vh; 
+  height: 100vh; 
   width: 100%; 
 }
 
@@ -11,7 +11,7 @@ html, body {
 
 .map-preload {
   position: fixed;
-  bottom: 60%;
+  bottom: 350px;
   left: 10px;
   z-index: 1000;
   background-color: white;
