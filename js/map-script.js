@@ -102,34 +102,41 @@ fetch('json/trees.json')
       });
   
       function displaySearchResults(results) {
-        
-        results.forEach(result => {
 
-          const cardItem = document.createElement('li');        
-          cardItem.innerHTML = `
-            <div style="padding:5px;">
-              <h5>${result.tree_name}</h5>
-              <p>Found in: ${result.area_name}</p>
-              <p>Planted by: ${result.tree_planted_by}</p>
-              <p>${result.tree_created_date}</p>
-              <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
-            </div>
-          `;
+        searchResults.innerHTML = '';
+  
+        if (results.length === 0) {
 
-          searchResults.appendChild(cardItem);
+          const noResultsItem = document.createElement('li');
+          noResultsItem.textContent = 'No results found';
+          searchResults.appendChild(noResultsItem);
+          
+        } else {
 
-          cardItem.addEventListener('click', function () {
-            const selectedTree = searchData.find(area => area.area_name === result.area_name)
-              .area_trees.find(tree => tree.tree_name === result.tree_name);
-
-            map.flyTo([selectedTree.tree_lat, selectedTree.tree_long], 17,{ duration: .25 });
+          results.forEach(result => {
+            const cardItem = document.createElement('li');        
+            cardItem.innerHTML = `
+              <div style="padding:5px;">
+                <h5>${result.tree_name}</h5>
+                <p>Found in: ${result.area_name}</p>
+                <p>Planted by: ${result.tree_planted_by}</p>
+                <p>${result.tree_created_date}</p>
+                <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
+              </div>
+            `;
+  
+            searchResults.appendChild(cardItem);
+  
+            cardItem.addEventListener('click', function () {
+              const selectedTree = searchData.find(area => area.area_name === result.area_name)
+                .area_trees.find(tree => tree.tree_name === result.tree_name);
+  
+              map.flyTo([selectedTree.tree_lat, selectedTree.tree_long], 17,{ duration: .25 });
+            });
           });
-        });
-
+         
+        }
       }
-
-
-
   })
 
   .catch(error => {
