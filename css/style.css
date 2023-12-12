@@ -11,11 +11,11 @@ html, body {
 
 .map-reset-btn {
   position: fixed;
-  bottom: 40px; 
-  left: 10px; 
+  top: 50px; 
+  left: 50px; 
   z-index: 1000;
   background-color: white;
-  width: 12vw;
+  width: 70px;
   overflow-y: auto;
   overflow-x: hidden;
 }
