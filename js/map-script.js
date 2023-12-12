@@ -34,6 +34,34 @@ fetch('json/trees.json')
   .then(response => response.json())
   .then(data => {
     data.forEach(area => {
+
+      const preloadContainer = document.getElementById('preloadContainer');
+      preloadContainer.innerHTML = generateHTMLContent(data);
+      
+      //Preload
+      function generateHTMLContent(data) {
+        return data.map(area => {
+          const areaHTML = `
+            <div >
+              <p>Planted Date: ${area.area_created_date}</p>
+              
+                ${area.area_trees.map(tree => 
+                  `
+                  <div class="map-preload-item">
+                    <h5>${tree.tree_name}</h5>
+                    <p>Planted by: ${tree.tree_planted_by}</p>
+                  </div>
+                  <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
+                `)
+                .join('')}
+             
+            </div>
+          `;
+          return areaHTML;
+        }).join('');
+      }
+
+      //Markers
       const area_name = area.area_name;
       const areaMarker = L.marker(new L.LatLng(area.area_lat, area.area_lng), {icon: areaIcon});
 
@@ -80,21 +108,13 @@ fetch('json/trees.json')
 
       map.addLayer(markers);
 
+
+      //Search
       searchData = data;
 
       const searchInput = document.getElementById('searchInput');
       const searchResults = document.getElementById('searchResults');
-      /*
-      performSearch('');
-  
-      function performSearch(searchTerm) {
-  
-        const flatResults = searchData.flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name })));
-  
-        const filteredResults = flatResults.filter(result => result.tree_name.toLowerCase().includes(searchTerm));
-  
-        displaySearchResults(filteredResults);
-      }*/
+     
       const noResultsItem = document.createElement('li');
       noResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;">No results found</h5>';
 
@@ -153,35 +173,7 @@ fetch('json/trees.json')
          
         }
       }
-
-      const preloadContainer = document.getElementById('preloadContainer');
-      preloadContainer.innerHTML = generateHTMLContent(data);
-      
-      function generateHTMLContent(data) {
-        return data.map(area => {
-          const areaHTML = `
-            <div >
-              <p>Planted Date: ${area.area_created_date}</p>
-              
-                ${area.area_trees.map(tree => 
-                  `
-                  <div class="map-preload-item">
-                    <h5>${tree.tree_name}</h5>
-                    <p>Planted by: ${tree.tree_planted_by}</p>
-                  </div>
-                  <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
-                `)
-                .join('')}
-             
-            </div>
-          `;
-          return areaHTML;
-        }).join('');
-      }
-
-
   })
-
   
   .catch(error => {
     console.error('Error loading JSON:', error);
