@@ -37,7 +37,7 @@ fetch('json/trees.json')
 
       const preloadContainer = document.getElementById('preloadContainer');
       preloadContainer.innerHTML = generateHTMLContent(data);
-      
+
       //Preload
       function generateHTMLContent(data) {
         return data.map(area => {
@@ -59,6 +59,9 @@ fetch('json/trees.json')
           `;
           return areaHTML;
         }).join('');
+
+
+        
       }
 
       //Markers
