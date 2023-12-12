@@ -2,8 +2,13 @@
   {
     "area_id": "0001",
     "area_name": "Kisolon Tree Park",
-    "area_lat": 8.335002,
-    "area_lng": 124.972789,
+    "area_polygon_vertices": [
+      [8.335680, 124.971923],
+      [8.335011, 124.972706],
+      [8.333365, 124.971977],
+      [8.333270, 124.970647],
+      [8.334841, 124.970904]
+    ],
     "area_created_date": "11-Dec-2023",
     "area_modified_date": "11-Dec-2023",
     "area_trees": [
@@ -29,8 +34,8 @@
       {
         "tree_id": "0003",
         "tree_name": "Alingatong",
-        "tree_lat": 8.335082,
-        "tree_long": 124.971845,
+        "tree_lat": 8.334650,
+        "tree_long": 124.971290,
         "tree_created_date": "11-Dec-2023",
         "tree_modified_date": "11-Dec-2023",
         "tree_planted_by":"Anon"
@@ -38,8 +43,17 @@
       {
         "tree_id": "0004",
         "tree_name": "Rattan",
-        "tree_lat": 8.335082,
-        "tree_long": 124.971845,
+        "tree_lat": 8.334395,
+        "tree_long": 124.971998,
+        "tree_created_date": "11-Dec-2023",
+        "tree_modified_date": "11-Dec-2023",
+        "tree_planted_by":"Anon"
+      },
+      {
+        "tree_id": "0005",
+        "tree_name": "Rattan",
+        "tree_lat": 8.334172,
+        "tree_long": 124.971247,
         "tree_created_date": "11-Dec-2023",
         "tree_modified_date": "11-Dec-2023",
         "tree_planted_by":"Anon"

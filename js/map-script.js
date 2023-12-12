@@ -29,53 +29,55 @@ fetch('json/trees.json')
   .then(data => {
     data.forEach(area => {
 
-    //Markers
-      const area_name = area.area_name;
-      const areaMarker = L.marker(new L.LatLng(area.area_lat, area.area_lng), {icon: areaIcon});
+    //Polygon
+    const area_name = area.area_name;
+    const areaPolygon = L.polygon(area.area_polygon_vertices, { color: 'green' });
 
-      areaMarker.bindPopup(`
-      <div padding: 10px;">
+    areaPolygon.bindPopup(`
+      <div style="padding: 10px;">
         <h3 style="margin-bottom: 5px;">${area_name}</h3>
         <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
         <p style="margin: 10px 0;">This is a beautiful area.</p>
         <a href="#" style="color: blue; text-decoration: none;">Learn More</a>
       </div>
-      `);
+    `);
 
-      markers.addLayer(areaMarker);
+    areaPolygon.on('click', function (ev) {
+      const latlng = map.mouseEventToLatLng(ev.originalEvent);
+      console.log(latlng.lat + ', ' + latlng.lng);
+    });
 
-      areaMarker.on('click', function (ev) {
-        const latlng = map.mouseEventToLatLng(ev.originalEvent);
-        console.log(latlng.area_lat + ', ' + latlng.area_lng);
-      });
+    map.addLayer(areaPolygon);
 
-      if (area.area_trees && area.area_trees.length > 0) {
-        area.area_trees.forEach(tree => {
-          const treeMarker = L.marker(new L.LatLng(tree.tree_lat, tree.tree_long),{icon: treeIcon});
-         
-          treeMarker.bindPopup(`
+    //Markers
+      area.area_trees.forEach(tree => {
+        const treeMarker = L.marker(new L.LatLng(tree.tree_lat, tree.tree_long),{icon: treeIcon});
+
+        treeMarker.bindPopup(`
           <div padding: 10px;">
-            <p style="margin: 10px 0;"class="text-secondary">Tree ID: ${tree.tree_id}</p>
-            <h3 style="margin-bottom: 5px;">${tree.tree_name}</h3>
-            <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
-            <p style="margin: 10px 0;">Planted by: ${tree.tree_planted_by}</p>
-            <p style="margin: 10px 0;">Planted on: ${tree.tree_created_date}</p>
-            <a href="#" style="color: blue; text-decoration: none;">View Details</a>
+          <p style="margin: 10px 0;"class="text-secondary">Tree ID: ${tree.tree_id}</p>
+          <h3 style="margin-bottom: 5px;">${tree.tree_name}</h3>
+          <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
+          <p style="margin: 10px 0;">Planted by: ${tree.tree_planted_by}</p>
+          <p style="margin: 10px 0;">Planted on: ${tree.tree_created_date}</p>
+          <a href="#" style="color: blue; text-decoration: none;">View Details</a>
           </div>
-          `);
+        `);
 
-          markers.addLayer(treeMarker);
+        markers.addLayer(treeMarker);
 
-          treeMarker.on('click', function (ev) {
-            const latlng = map.mouseEventToLatLng(ev.originalEvent);
-            console.log(latlng.lat + ', ' + latlng.lng);
-          });
+        treeMarker.on('click', function (ev) {
+          const latlng = map.mouseEventToLatLng(ev.originalEvent);
+              console.log(latlng.lat + ', ' + latlng.lng);
         });
-      }
+
+
+        
       });
+    });
+    map.addLayer(markers);
 
-      map.addLayer(markers);
-
+    
     //Preload
     const recentRecordsContainer = document.getElementById('recentRecordsContainer');
     recentRecordsContainer.innerHTML = generateHTMLContent(data);
