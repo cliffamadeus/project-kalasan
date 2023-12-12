@@ -97,10 +97,9 @@ fetch('json/trees.json')
       }*/
       const noResultsItem = document.createElement('li');
       noResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;">No results found</h5>';
-  
 
       const initialResultsItem = document.createElement('li');
-      initialResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;" disabled>Checkout our Open Database</h5>';
+      initialResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;">Checkout our Open Database</h5>';
       searchResults.appendChild(initialResultsItem);
 
       searchInput.addEventListener('input', function () {
