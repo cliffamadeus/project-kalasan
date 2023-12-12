@@ -1,12 +1,12 @@
-var map = L.map('cluster-map').setView([8.011424, 125.279184], 5);
+const map = L.map('cluster-map').setView([8.011424, 125.279184], 5);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributor | custom by CAFE'
 }).addTo(map);
 
-var markers = L.markerClusterGroup();
+const markers = L.markerClusterGroup();
 
-var treeIcon = L.icon({
+const treeIcon = L.icon({
   iconUrl: './img/tree.png',
   iconSize:     [40, 40], 
   shadowSize:   [40, 40], 
@@ -15,7 +15,7 @@ var treeIcon = L.icon({
   popupAnchor:  [0, -40]  
 });
 
-var areaIcon = L.icon({
+const areaIcon = L.icon({
   iconUrl: './img/area-icon.png',
   iconSize:     [50, 50], 
   shadowSize:   [40, 40], 
@@ -28,8 +28,8 @@ fetch('json/trees.json')
   .then(response => response.json())
   .then(data => {
     data.forEach(area => {
-      var area_name = area.area_name;
-      var areaMarker = L.marker(new L.LatLng(area.area_lat, area.area_lng), {icon: areaIcon});
+      const area_name = area.area_name;
+      const areaMarker = L.marker(new L.LatLng(area.area_lat, area.area_lng), {icon: areaIcon});
 
       areaMarker.bindPopup(`
       <div padding: 10px;">
@@ -43,13 +43,13 @@ fetch('json/trees.json')
       markers.addLayer(areaMarker);
 
       areaMarker.on('click', function (ev) {
-        var latlng = map.mouseEventToLatLng(ev.originalEvent);
+        const latlng = map.mouseEventToLatLng(ev.originalEvent);
         console.log(latlng.area_lat + ', ' + latlng.area_lng);
       });
 
       if (area.area_trees && area.area_trees.length > 0) {
         area.area_trees.forEach(tree => {
-          var treeMarker = L.marker(new L.LatLng(tree.tree_lat, tree.tree_long),{icon: treeIcon});
+          const treeMarker = L.marker(new L.LatLng(tree.tree_lat, tree.tree_long),{icon: treeIcon});
          
           treeMarker.bindPopup(`
           <div padding: 10px;">
@@ -64,7 +64,7 @@ fetch('json/trees.json')
           markers.addLayer(treeMarker);
 
           treeMarker.on('click', function (ev) {
-            var latlng = map.mouseEventToLatLng(ev.originalEvent);
+            const latlng = map.mouseEventToLatLng(ev.originalEvent);
             console.log(latlng.lat + ', ' + latlng.lng);
           });
         });
@@ -101,49 +101,43 @@ fetch('json/trees.json')
       });
   
       function displaySearchResults(results) {
-        searchResults.innerHTML = '';
-  
-        if (results.length === 0) {
-          const noResultsItem = document.createElement('li');
-          noResultsItem.textContent = 'No results found';
-          searchResults.appendChild(noResultsItem);
-        } else {
-          results.forEach(result => {
-            const cardItem = document.createElement('li');
-            cardItem.classList.add('search-card');
-  
-            const cardContent = document.createElement('div');
-            cardContent.classList.add('search-card-content');
-  
-            const treeName = document.createElement('h5');
-            treeName.textContent = result.tree_name;
-  
-            const areaName = document.createElement('p');
-            areaName.textContent = `Found in : ${result.area_name}`;
-  
-            const plantedBy = document.createElement('p');
-            plantedBy.textContent = `Planted by : ${result.tree_planted_by}`;
+        
+        results.forEach(result => {
+          const cardItem = document.createElement('li');
+          cardItem.classList.add('search-card');
 
-            const plantedOn = document.createElement('p');
-            plantedOn.textContent = `${result.tree_created_date}`;
+          const cardContent = document.createElement('div');
+          cardContent.classList.add('search-card-content');
 
-            cardContent.appendChild(plantedBy);
-            cardContent.appendChild(treeName);
-            cardContent.appendChild(areaName);
-            cardContent.appendChild(plantedOn);
-            
-            cardItem.appendChild(cardContent);
-  
-            searchResults.appendChild(cardItem);
+          const treeName = document.createElement('h5');
+          treeName.textContent = result.tree_name;
 
-            cardItem.addEventListener('click', function () {
-              const selectedTree = searchData.find(area => area.area_name === result.area_name)
-                .area_trees.find(tree => tree.tree_name === result.tree_name);
+          const areaName = document.createElement('p');
+          areaName.textContent = `Found in : ${result.area_name}`;
 
-              map.flyTo([selectedTree.tree_lat, selectedTree.tree_long], 17,{ duration: .25 });
-            });
+          const plantedBy = document.createElement('p');
+          plantedBy.textContent = `Planted by : ${result.tree_planted_by}`;
+
+          const plantedOn = document.createElement('p');
+          plantedOn.textContent = `${result.tree_created_date}`;
+
+          cardContent.appendChild(plantedBy);
+          cardContent.appendChild(treeName);
+          cardContent.appendChild(areaName);
+          cardContent.appendChild(plantedOn);
+          
+          cardItem.appendChild(cardContent);
+
+          searchResults.appendChild(cardItem);
+
+          cardItem.addEventListener('click', function () {
+            const selectedTree = searchData.find(area => area.area_name === result.area_name)
+              .area_trees.find(tree => tree.tree_name === result.tree_name);
+
+            map.flyTo([selectedTree.tree_lat, selectedTree.tree_long], 17,{ duration: .25 });
           });
-        }
+        });
+
       }
 
 
