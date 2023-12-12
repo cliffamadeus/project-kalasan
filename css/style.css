@@ -19,6 +19,10 @@ html, body {
   border-radius: 1px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 30vw; 
+  overflow-y: auto;
+  overflow-x: hidden; 
+
+  scroll-behavior: smooth;
 }
 
 
@@ -29,6 +33,29 @@ html, body {
   margin: 10px 0 0 0;
   max-height: 60vh;
   overflow-y: auto;
+  overflow-x: hidden; 
+
+  scroll-behavior: smooth;
+}
+
+.map-search-bar::-webkit-scrollbar,
+.map-search-results::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.map-search-bar::-webkit-scrollbar-thumb,
+.map-search-results::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.map-search-bar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.map-search-results {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 }
 
 .map-search-results li:hover {
