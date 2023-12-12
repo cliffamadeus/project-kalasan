@@ -36,14 +36,14 @@ fetch('json/trees.json')
     data.forEach(area => {
 
     //Preload
-    const preloadContainer = document.getElementById('preloadContainer');
-    preloadContainer.innerHTML = generateHTMLContent(data);
+    const recentRecordsContainer = document.getElementById('recentRecordsContainer');
+    recentRecordsContainer.innerHTML = generateHTMLContent(data);
 
       function generateHTMLContent(data) {
         return data.map(area => {
           const areaHTML = `
             <div >
-                ${area.area_trees.slice(0, 4).map(tree => 
+                ${area.area_trees.slice(0, 3).map(tree => 
                   `
                   <div class="card map-preload-item">
                   <span style="display: inline-block;">
