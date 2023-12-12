@@ -4,6 +4,12 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributor | custom by CAFE'
 }).addTo(map);
 
+// Reset Zoom Button Click Event
+document.getElementById('resetZoomButton').addEventListener('click', function () {
+  // Set the map's zoom and center to the initial state
+  map.setView([12.911025, 122.479184], 6);
+});
+
 const markers = L.markerClusterGroup();
 
 const treeIcon = L.icon({
