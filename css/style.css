@@ -1,5 +1,5 @@
 #cluster-map {
-  height: 100vh; 
+  height: 95vh; 
   width: 100%; 
 }
 
@@ -8,7 +8,6 @@ html, body {
   margin: 0;
   padding: 0;
 }
-
 
 .map-search-bar {
   position: absolute;
@@ -19,34 +18,48 @@ html, body {
   padding: 5px;
   border-radius: 1px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 30vw; 
+  overflow-y: auto;
+  overflow-x: hidden; 
+
+  scroll-behavior: smooth;
 }
 
-.search-results {
+
+.map-search-results {
   list-style: none;
   padding: 0;
   width: 100%;
   margin: 10px 0 0 0;
-  max-height: 60vh; 
-  overflow-y: auto; 
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden; 
+
+  scroll-behavior: smooth;
 }
 
-.search-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.map-search-bar::-webkit-scrollbar,
+.map-search-results::-webkit-scrollbar {
+  width: 0.5em;
 }
 
-.search-card-content {
-  padding: 10px;
+.map-search-bar::-webkit-scrollbar-thumb,
+.map-search-results::-webkit-scrollbar-thumb {
+  background-color: transparent;
 }
 
-.search-card h3 {
-  margin: 0;
+.map-search-bar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 }
 
-.search-card p {
-  margin: 5px 0;
-  font-size: 14px;
+.map-search-results {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.map-search-results li:hover {
+  background-color: #f0f0f0; 
 }
 
 
