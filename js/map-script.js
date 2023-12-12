@@ -35,8 +35,6 @@ fetch('json/trees.json')
   .then(data => {
     data.forEach(area => {
 
-      
-
     //Preload
     const preloadContainer = document.getElementById('preloadContainer');
     preloadContainer.innerHTML = generateHTMLContent(data);
