@@ -21,6 +21,8 @@ function renderTreePark(data) {
   // Display the total count of areas and trees
   totalTreesContainer.innerHTML = `
   <div class="container" style="text-align:center;">
+    <h4 class="card-header">Project Kalasan</h4>
+    <hr>
     <div class="row">
       <div class="col-sm">
         <p>Barangay Tree Parks</p>
