@@ -59,16 +59,16 @@ fetch('json/trees.json')
 
     //Markers
       area.area_trees.forEach(tree => {
-        const treeMarker = L.marker(new L.LatLng(tree.tree_lat, tree.tree_long),{icon: treeIcon});
+      const treeMarker = L.marker(new L.LatLng(tree.tree_lat, tree.tree_long),{icon: treeIcon});
 
         treeMarker.bindPopup(`
           <div style="z-index: 1001;">
-          <p class="text-secondary">Tree ID: ${tree.tree_id}</p>
-          <h3 style="margin-bottom: 5px;">${tree.tree_name}</h3>
-          <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
-          <p style="margin: 10px 0;">Planted by: ${tree.tree_planted_by}</p>
-          <p style="margin: 10px 0;">Planted on: ${tree.tree_created_date}</p>
-          <a href="#" style="color: blue; text-decoration: none;">View Details</a>
+            <p class="text-secondary">Tree ID: ${tree.tree_id}</p>
+              <h3 style="margin-bottom: 5px;">${tree.tree_name}</h3>
+                <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
+                  <p style="margin: 10px 0;">Planted by: ${tree.tree_planted_by}</p>
+                  <p style="margin: 10px 0;">Planted on: ${tree.tree_created_date}</p>
+                  <a href="#" style="color: blue; text-decoration: none;">View Details</a>
           </div>
         `);
 
@@ -76,11 +76,13 @@ fetch('json/trees.json')
 
         treeMarker.on('click', function (ev) {
           const latlng = map.mouseEventToLatLng(ev.originalEvent);
-              console.log(latlng.lat + ', ' + latlng.lng);
+            console.log(latlng.lat + ', ' + latlng.lng);
         });
- 
+  
       });
+      
     });
+
     map.addLayer(markers);
     
     //Recent Records
@@ -121,73 +123,69 @@ fetch('json/trees.json')
     }
 
     //Search
-      searchData = data;
-      const searchInputBar = document.getElementById('searchInputBar');
-      const searchResults = document.getElementById('searchResults');
+    searchData = data;
+    const searchInputBar = document.getElementById('searchInputBar');
+    const searchResults = document.getElementById('searchResults');
       
-      const noResultsItem = document.createElement('li');
-      noResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;">No results found</h5>';
+    const noResultsItem = document.createElement('li');
+    noResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;">No results found</h5>';
 
-      performSearch('');
-      function performSearch(searchTerm) {
-        const flatResults = searchData.flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name })));
-        const filteredResults = flatResults.filter(result => result.tree_name.toLowerCase().includes(searchTerm));
+    performSearch('');
+    function performSearch(searchTerm) {
+      const flatResults = searchData.flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name })));
+      const filteredResults = flatResults.filter(result => result.tree_name.toLowerCase().includes(searchTerm));
 
-        displaySearchResults(filteredResults);
-      }
+      displaySearchResults(filteredResults);
+    }
       
-      searchInputBar.addEventListener('input', function () {
-          const searchTerm = searchInputBar.value.toLowerCase();
-      
-          if (!searchTerm) {
-              searchResults.innerHTML = '';
-              performSearch('');
-              return;
-          }
+    searchInputBar.addEventListener('input', function () {
+        const searchTerm = searchInputBar.value.toLowerCase();
+    
+        if (!searchTerm) {
+            searchResults.innerHTML = '';
+            performSearch('');
+            return;
+        }
          
-          const filteredResults = searchData
-              .flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name, tree_planted_by: tree.tree_planted_by })))
-              .filter(result => result.area_name.toLowerCase().includes(searchTerm) || result.tree_name.toLowerCase().includes(searchTerm) || result.tree_planted_by.toLowerCase().includes(searchTerm));
+        const filteredResults = searchData
+            .flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name, tree_planted_by: tree.tree_planted_by })))
+            .filter(result => result.area_name.toLowerCase().includes(searchTerm) || result.tree_name.toLowerCase().includes(searchTerm) || result.tree_planted_by.toLowerCase().includes(searchTerm));
       
-          displaySearchResults(filteredResults);
-      });
+        displaySearchResults(filteredResults);
+    });
       
-      function displaySearchResults(results) {
-          searchResults.innerHTML = '';
+    function displaySearchResults(results) {
+      searchResults.innerHTML = '';
       
-          if (results.length === 0) {
-              searchResults.appendChild(noResultsItem);
-          } else {
-              const areaTreeCountMap = {};
+        if (results.length === 0) {
+            searchResults.appendChild(noResultsItem);
+        } else {
+            const areaTreeCountMap = {};
+            results.forEach(result => {
+              const areaName = result.area_name;
+              areaTreeCountMap[areaName] = (areaTreeCountMap[areaName] || 0) + 1;
+            });
       
-              results.forEach(result => {
-                  const areaName = result.area_name;
-                  areaTreeCountMap[areaName] = (areaTreeCountMap[areaName] || 0) + 1;
-              });
-      
-              Object.entries(areaTreeCountMap).forEach(([areaName, treeCount]) => {
-                  const searchCardItem = document.createElement('li');
-                  searchCardItem.innerHTML = `
-                      <div class="map-search-item" style="padding:5px;">
-                          <h5>Barangay ${areaName}</h5>
-                          <p> (${treeCount}) tree record/s found as of ${currentDate}</p>
+            Object.entries(areaTreeCountMap).forEach(([areaName, treeCount]) => {
+              const searchCardItem = document.createElement('li');
+              searchCardItem.innerHTML = `
+                <div class="map-search-item" style="padding:5px;">
+                  <h5>Barangay ${areaName}</h5>
+                      <p> (${treeCount}) tree record/s found as of ${currentDate}</p>
                           <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
-                      </div>
-                  `;
+                </div>
+              `;
       
-                  searchResults.appendChild(searchCardItem);
-      
-                  searchCardItem.addEventListener('click', function () {
-                      const selectedArea = searchData.find(area => area.area_name === areaName);
-      
-                      // Use the centroid or any other method to get the center of the area
-                      const areaCenter = [selectedArea.area_lat, selectedArea.area_lng];
-      
-                      map.flyTo(areaCenter, 17, { duration: 0.25 });
+              searchResults.appendChild(searchCardItem);
+              searchCardItem.addEventListener('click', function () {
+                const selectedArea = searchData.find(area => area.area_name === areaName);
+                  // Use the centroid or any other method to get the center of the area
+                  const areaCenter = [selectedArea.area_lat, selectedArea.area_lng];
+                  map.flyTo(areaCenter, 17, { duration: 0.25 });
                   });
               });
           }
-      }
+    }
       
   })
   
