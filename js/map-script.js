@@ -106,69 +106,63 @@ fetch('json/trees.json')
       }
     //Search
       searchData = data;
-
       const searchInputBar = document.getElementById('searchInputBar');
       const searchResults = document.getElementById('searchResults');
-     
+      
       const noResultsItem = document.createElement('li');
       noResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;">No results found</h5>';
-
-      /*
-      const onLoadResultsItem = document.createElement('li');
-      onLoadResultsItem.innerHTML = '<p class="map-search-reset">Checkout our Open Database</h4>';
-      searchResults.appendChild(onLoadResultsItem);
-      */
+      
       searchInputBar.addEventListener('input', function () {
-        const searchTerm = searchInputBar.value.toLowerCase();
-
-        if (!searchTerm) {
-          searchResults.innerHTML = '';
-          //searchResults.appendChild(onLoadResultsItem);
-          return;
-        }
-
-        const filteredResults = searchData
-        .flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name, tree_planted_by: tree.tree_planted_by })))
-        .filter(result => result.tree_name.toLowerCase().includes(searchTerm) || result.tree_planted_by.toLowerCase().includes(searchTerm));
+          const searchTerm = searchInputBar.value.toLowerCase();
       
-        displaySearchResults(filteredResults);
+          if (!searchTerm) {
+              searchResults.innerHTML = '';
+              return;
+          }
       
+          const filteredResults = searchData
+              .flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name, tree_planted_by: tree.tree_planted_by })))
+              .filter(result => result.area_name.toLowerCase().includes(searchTerm) || result.tree_name.toLowerCase().includes(searchTerm) || result.tree_planted_by.toLowerCase().includes(searchTerm));
+      
+          displaySearchResults(filteredResults);
       });
-  
+      
       function displaySearchResults(results) {
-
-        searchResults.innerHTML = '';
-  
-        if (results.length === 0) {
-
-          searchResults.appendChild(noResultsItem);
-          
-        } else {
-
-          results.forEach(result => {
-            const searchCardItem = document.createElement('li');        
-            searchCardItem.innerHTML = `
-              <div class="map-search-item" style="padding:5px;">
-                <h5>${result.tree_name}</h5>
-                <p>Found in: ${result.area_name}</p>
-                <p>Planted by: ${result.tree_planted_by}</p>
-                <p>${result.tree_created_date}</p>
-                <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
-              </div>
-            `;
-  
-            searchResults.appendChild(searchCardItem);
-  
-            searchCardItem.addEventListener('click', function () {
-              const selectedTree = searchData.find(area => area.area_name === result.area_name)
-                .area_trees.find(tree => tree.tree_name === result.tree_name);
-  
-              map.flyTo([selectedTree.tree_lat, selectedTree.tree_long], 17,{ duration: .25 });
-            });
-          });
-         
-        }
+          searchResults.innerHTML = '';
+      
+          if (results.length === 0) {
+              searchResults.appendChild(noResultsItem);
+          } else {
+              const areaTreeCountMap = {};
+      
+              results.forEach(result => {
+                  const areaName = result.area_name;
+                  areaTreeCountMap[areaName] = (areaTreeCountMap[areaName] || 0) + 1;
+              });
+      
+              Object.entries(areaTreeCountMap).forEach(([areaName, treeCount]) => {
+                  const searchCardItem = document.createElement('li');
+                  searchCardItem.innerHTML = `
+                      <div class="map-search-item" style="padding:5px;">
+                          <h5>${areaName} (${treeCount} trees)</h5>
+                          <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
+                      </div>
+                  `;
+      
+                  searchResults.appendChild(searchCardItem);
+      
+                  searchCardItem.addEventListener('click', function () {
+                      const selectedArea = searchData.find(area => area.area_name === areaName);
+      
+                      // Use the centroid or any other method to get the center of the area
+                      const areaCenter = [selectedArea.area_lat, selectedArea.area_lng];
+      
+                      map.flyTo(areaCenter, 17, { duration: 0.25 });
+                  });
+              });
+          }
       }
+      
   })
   
   .catch(error => {
