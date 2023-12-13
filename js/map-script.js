@@ -113,16 +113,17 @@ fetch('json/trees.json')
       const noResultsItem = document.createElement('li');
       noResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;">No results found</h5>';
 
+      /*
       const onLoadResultsItem = document.createElement('li');
       onLoadResultsItem.innerHTML = '<p class="map-search-reset">Checkout our Open Database</h4>';
       searchResults.appendChild(onLoadResultsItem);
-
+      */
       searchInputBar.addEventListener('input', function () {
         const searchTerm = searchInputBar.value.toLowerCase();
 
         if (!searchTerm) {
           searchResults.innerHTML = '';
-          searchResults.appendChild(onLoadResultsItem);
+          //searchResults.appendChild(onLoadResultsItem);
           return;
         }
 
