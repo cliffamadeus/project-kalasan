@@ -20,10 +20,7 @@
   <nav>
     <div class="w3-bar w3-light-grey">
       <a href="#home" class="w3-bar-item w3-button">Home</a>
-      <a href="#map" class="w3-bar-item w3-button">Map</a>
-      <input type="text" class="w3-bar-item w3-input" id="searchInputBar" placeholder="Search..">
-        <ul class="map-search-results" id="searchResults"></ul>
-      </input>     
+      <a href="#map" class="w3-bar-item w3-button">Map</a> 
     </div>
   </nav>
   <div id="cluster-map"></div>
@@ -37,14 +34,40 @@
     <i class="fas fa-eye"></i> Reset
   </button>
   
-  <button class="btn btn-light map-toggle-btn" id="toggleButton" data-toggle="modal" data-target="#historyModal">
-    <i class="fas fa-history"></i> History
+  <button class="btn btn-light map-search-btn" id="toggleButton" data-toggle="modal" data-target="#searchModal">
+    <i class="fas fa-search"></i>Search
+  </button>
+
+  <button class="btn btn-light map-history-btn" id="toggleButton" data-toggle="modal" data-target="#historyModal">
+    <i class="fas fa-history"></i><br>History
   </button>
 
   <button class="btn btn-light map-info-btn" id="toggleButton" data-toggle="modal" data-target="#exampleModalLong">
     <i class="fas fa-info"></i><br>Info
   </button>
 
+  <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Search Records</h5>
+          <i class="fa fa-close" data-dismiss="modal"></i>
+        </div>
+        <div class="modal-body">
+          
+          <input type="text" class="w3-bar-item w3-input" id="searchInputBar" placeholder="Search..">
+            <ul class="map-search-results" id="searchResults"></ul>
+          </input>    
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="modal fade" id="historyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -85,17 +108,17 @@
 
 
   <div class="map-search-bar">
-    <div id="treeParkContainer"></div>
-    <div id="totalTreesPlanted"></div>
+    <div id="totalTrees" style="text-align:center;"></div>
   </div>
 </body>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script  src="js/app.js"></script>
-  <script  src="js/map-script.js"></script>
-  <script  src="js/router.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script  src="js/app.js"></script>
+<script  src="js/map-script.js"></script>
+<script  src="js/router.js"></script>
 
 </html>
