@@ -20,10 +20,7 @@
   <nav>
     <div class="w3-bar w3-light-grey">
       <a href="#home" class="w3-bar-item w3-button">Home</a>
-      <a href="#map" class="w3-bar-item w3-button">Map</a>
-      <input type="text" class="w3-bar-item w3-input" id="searchInputBar" placeholder="Search..">
-        <ul class="map-search-results" id="searchResults"></ul>
-      </input>     
+      <a href="#map" class="w3-bar-item w3-button">Map</a> 
     </div>
   </nav>
   <div id="cluster-map"></div>
@@ -37,7 +34,7 @@
     <i class="fas fa-eye"></i> Reset
   </button>
   
-  <button class="btn btn-light map-search-btn" id="toggleButton" data-toggle="modal" data-target="">
+  <button class="btn btn-light map-search-btn" id="toggleButton" data-toggle="modal" data-target="#searchModal">
     <i class="fas fa-search"></i>Search
   </button>
 
@@ -49,6 +46,28 @@
     <i class="fas fa-info"></i><br>Info
   </button>
 
+  <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Search Records</h5>
+          <i class="fa fa-close" data-dismiss="modal"></i>
+        </div>
+        <div class="modal-body">
+          
+          <input type="text" class="w3-bar-item w3-input" id="searchInputBar" placeholder="Search..">
+            <ul class="map-search-results" id="searchResults"></ul>
+          </input>    
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="modal fade" id="historyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
