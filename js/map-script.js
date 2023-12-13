@@ -1,5 +1,5 @@
 // Map setup
-const map = L.map('cluster-map').setView([12.911025, 122.479184], 5);
+const map = L.map('cluster-map').setView([14.350878, 122.299805], 5);
 const markers = L.markerClusterGroup();
 const currentDate = new Date().toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' });
 
@@ -10,7 +10,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Reset zoom button event listener
 document.getElementById('resetZoomButton').addEventListener('click', function () {
-  map.setView([12.911025, 122.479184], 5);
+  map.setView([14.350878, 122.299805], 5);
 });
 
 // Function to create icon
