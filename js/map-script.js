@@ -5,7 +5,7 @@ const currentDate = new Date().toLocaleString('en-US', { year: 'numeric', month:
 
 // Tile layer
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributor | custom map by CAFE'
+  attribution: 'Project Kalasan &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributor | custom map by CAFE'
 }).addTo(map);
 
 // Reset zoom button event listener
