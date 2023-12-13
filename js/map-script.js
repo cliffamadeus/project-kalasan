@@ -79,6 +79,7 @@ fetch('json/trees.json')
 
     
     //Preload
+    /*
     const recentRecordsContainer = document.getElementById('recentRecordsContainer');
     recentRecordsContainer.innerHTML = generateHTMLContent(data);
 
@@ -102,7 +103,7 @@ fetch('json/trees.json')
           `;
           return areaHTML;
         }).join('');
-      }
+      }*/
     //Search
       searchData = data;
 
