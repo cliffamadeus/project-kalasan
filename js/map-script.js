@@ -1,12 +1,20 @@
 const map = L.map('cluster-map').setView([12.911025, 122.479184], 5);
 const markers = L.markerClusterGroup();
 
+const currentDate = new Date().toLocaleString('en-US', {
+  year: 'numeric',
+  month: 'numeric',
+  day: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+});
+
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributor | custom by CAFE'
 }).addTo(map);
 
 document.getElementById('resetZoomButton').addEventListener('click', function () {
-  map.setView([12.911025, 122.479184], 6);
+  map.setView([12.911025, 122.479184], 5);
 });
 
 function createIcon(iconUrl, iconSize, shadowSize, iconAnchor, shadowAnchor, popupAnchor) {
@@ -54,8 +62,8 @@ fetch('json/trees.json')
         const treeMarker = L.marker(new L.LatLng(tree.tree_lat, tree.tree_long),{icon: treeIcon});
 
         treeMarker.bindPopup(`
-          <div padding: 10px;">
-          <p style="margin: 10px 0;"class="text-secondary">Tree ID: ${tree.tree_id}</p>
+          <div style="z-index: 1001;">
+          <p class="text-secondary">Tree ID: ${tree.tree_id}</p>
           <h3 style="margin-bottom: 5px;">${tree.tree_name}</h3>
           <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
           <p style="margin: 10px 0;">Planted by: ${tree.tree_planted_by}</p>
@@ -70,9 +78,7 @@ fetch('json/trees.json')
           const latlng = map.mouseEventToLatLng(ev.originalEvent);
               console.log(latlng.lat + ', ' + latlng.lng);
         });
-
-
-        
+ 
       });
     });
     map.addLayer(markers);
@@ -140,11 +146,14 @@ fetch('json/trees.json')
                   areaTreeCountMap[areaName] = (areaTreeCountMap[areaName] || 0) + 1;
               });
       
+              
+
               Object.entries(areaTreeCountMap).forEach(([areaName, treeCount]) => {
                   const searchCardItem = document.createElement('li');
                   searchCardItem.innerHTML = `
                       <div class="map-search-item" style="padding:5px;">
-                          <h5>${areaName} (${treeCount} trees)</h5>
+                          <h5>Barangay ${areaName}</h5>
+                          <p> (${treeCount}) tree record/s found as of ${currentDate}</p>
                           <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
                       </div>
                   `;

@@ -20,16 +20,23 @@ function renderTreePark(data) {
 
   // Display the total count of areas and trees
   totalTreesContainer.innerHTML = `
-  <div class="dashboard-item">
-    <p>Total Areas</p>
-    <h3 class="dashboard-value">${totalAreas}</h3>
+  <div class="container" style="text-align:center;">
+    <div class="row">
+      <div class="col-sm">
+        <br>
+        <p>Total Areas</p>
+        <h3 class="dashboard-value">${totalAreas}</h3>
+      </div>
+      <div class="col-sm">
+        <p>Total Trees Planted</p>
+        <h3 class="dashboard-value">${totalTrees}</h3>
+      </div>
+    </div>
+    <hr>
+    <p>as of Today<br>${currentDate}</p>
   </div>
-  <hr>
-  <div class="dashboard-item">
-    <p>Total Trees Planted</p>
-    <h3 class="dashboard-value">${totalTrees}</h3>
-  </div>
-  `;
+  
+`;
 }
 
 // Fetch and render the tree park data
