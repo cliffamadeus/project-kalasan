@@ -1,4 +1,4 @@
-const map = L.map('cluster-map').setView([12.911025, 122.479184], 6);
+const map = L.map('cluster-map').setView([12.911025, 122.479184], 5);
 const markers = L.markerClusterGroup();
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
