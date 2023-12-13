@@ -6,7 +6,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 document.getElementById('resetZoomButton').addEventListener('click', function () {
-  map.setView([12.911025, 122.479184], 6);
+  map.setView([12.911025, 122.479184], 5);
 });
 
 function createIcon(iconUrl, iconSize, shadowSize, iconAnchor, shadowAnchor, popupAnchor) {
