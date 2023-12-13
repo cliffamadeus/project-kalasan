@@ -79,7 +79,7 @@ fetch('json/trees.json')
 
     
     //Preload
-    /*
+    
     const recentRecordsContainer = document.getElementById('recentRecordsContainer');
     recentRecordsContainer.innerHTML = generateHTMLContent(data);
 
@@ -89,7 +89,7 @@ fetch('json/trees.json')
             <div >
                 ${area.area_trees.slice(0, 3).map(tree => 
                   `
-                  <div class="card map-preload-item">
+                  <div class="map-preload-item">
                   <span style="display: inline-block;">
                     <a href="${tree.tree_id.trim()}" class="map-recent-records-header">${tree.tree_id.trim()}</a>
                     ${tree.tree_planted_by} has recently planted a tree
@@ -103,7 +103,7 @@ fetch('json/trees.json')
           `;
           return areaHTML;
         }).join('');
-      }*/
+      }
     //Search
       searchData = data;
 
