@@ -1,6 +1,14 @@
 const map = L.map('cluster-map').setView([12.911025, 122.479184], 5);
 const markers = L.markerClusterGroup();
 
+const currentDate = new Date().toLocaleString('en-US', {
+  year: 'numeric',
+  month: 'numeric',
+  day: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+});
+
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributor | custom by CAFE'
 }).addTo(map);
@@ -140,12 +148,14 @@ fetch('json/trees.json')
                   areaTreeCountMap[areaName] = (areaTreeCountMap[areaName] || 0) + 1;
               });
       
+              
+
               Object.entries(areaTreeCountMap).forEach(([areaName, treeCount]) => {
                   const searchCardItem = document.createElement('li');
                   searchCardItem.innerHTML = `
                       <div class="map-search-item" style="padding:5px;">
                           <h5>Barangay ${areaName}</h5>
-                          <p> (${treeCount}) tree record/s found</p>
+                          <p> (${treeCount}) tree record/s found as of ${currentDate}</p>
                           <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
                       </div>
                   `;
