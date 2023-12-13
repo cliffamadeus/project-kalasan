@@ -144,7 +144,8 @@ fetch('json/trees.json')
                   const searchCardItem = document.createElement('li');
                   searchCardItem.innerHTML = `
                       <div class="map-search-item" style="padding:5px;">
-                          <h5>${areaName} (${treeCount} trees)</h5>
+                          <h5>Barangay ${areaName}</h5>
+                          <p> (${treeCount}) tree record/s found</p>
                           <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
                       </div>
                   `;
