@@ -117,15 +117,24 @@ fetch('json/trees.json')
       
       const noResultsItem = document.createElement('li');
       noResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;">No results found</h5>';
+
+      performSearch('');
+      function performSearch(searchTerm) {
+        const flatResults = searchData.flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name })));
+        const filteredResults = flatResults.filter(result => result.tree_name.toLowerCase().includes(searchTerm));
+
+        displaySearchResults(filteredResults);
+      }
       
       searchInputBar.addEventListener('input', function () {
           const searchTerm = searchInputBar.value.toLowerCase();
       
           if (!searchTerm) {
               searchResults.innerHTML = '';
+              performSearch('');
               return;
           }
-      
+         
           const filteredResults = searchData
               .flatMap(area => area.area_trees.map(tree => ({ ...tree, area_name: area.area_name, tree_planted_by: tree.tree_planted_by })))
               .filter(result => result.area_name.toLowerCase().includes(searchTerm) || result.tree_name.toLowerCase().includes(searchTerm) || result.tree_planted_by.toLowerCase().includes(searchTerm));
