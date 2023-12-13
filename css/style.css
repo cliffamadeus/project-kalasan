@@ -81,7 +81,7 @@ html, body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.map-toggle-btn {
+.map-search-btn {
   position: fixed;
   top: 360px;
   left: 10px;
@@ -94,9 +94,22 @@ html, body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.map-info-btn {
+.map-history-btn {
   position: fixed;
   top: 420px;
+  left: 10px;
+  z-index: 1000;
+  background-color: white;
+  width: 70px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-inline: 5px solid rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.map-info-btn {
+  position: fixed;
+  top: 480px;
   left: 10px;
   z-index: 1000;
   background-color: white;
