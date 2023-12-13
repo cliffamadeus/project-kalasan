@@ -62,8 +62,8 @@ fetch('json/trees.json')
         const treeMarker = L.marker(new L.LatLng(tree.tree_lat, tree.tree_long),{icon: treeIcon});
 
         treeMarker.bindPopup(`
-          <div padding: 10px;">
-          <p style="margin: 10px 0;"class="text-secondary">Tree ID: ${tree.tree_id}</p>
+          <div style="z-index: 1001;">
+          <p class="text-secondary">Tree ID: ${tree.tree_id}</p>
           <h3 style="margin-bottom: 5px;">${tree.tree_name}</h3>
           <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
           <p style="margin: 10px 0;">Planted by: ${tree.tree_planted_by}</p>
@@ -78,9 +78,7 @@ fetch('json/trees.json')
           const latlng = map.mouseEventToLatLng(ev.originalEvent);
               console.log(latlng.lat + ', ' + latlng.lng);
         });
-
-
-        
+ 
       });
     });
     map.addLayer(markers);
