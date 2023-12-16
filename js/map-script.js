@@ -108,7 +108,7 @@ fetch('json/trees.json')
             `
             <div class="map-preload-item" onclick="flyToLocation(${tree.tree_lat}, ${tree.tree_lng})">
               <span style="display: inline-block;">
-                <a href="${tree.tree_id.trim()}" class="map-recent-records-header">${tree.tree_id.trim()}</a>
+                <a href="${tree.tree_id.trim()}" class="map-recent-records-item">Tree #${tree.tree_id.trim()}</a>
                 ${tree.tree_planted_by} has recently planted a tree
                 <br>Area: ${tree.area_name || defaultAreaName} 
               </span>
