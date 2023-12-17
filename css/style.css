@@ -121,13 +121,13 @@ html, body {
 }
 
 
-.map-search-reset{
+.map-dash-reset{
   color: grey;
   text-align: center;
   font-size: 14px;
 }
 
-.map-search-bar {
+.map-dash-bar {
   position: absolute;
   top: 50px;
   right: 10px;
@@ -136,7 +136,7 @@ html, body {
   padding: 10px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 200px;
+  width: 150px;
   max-height: 30;
   overflow-y: auto;
   overflow-x: hidden;
@@ -144,12 +144,12 @@ html, body {
   transition: transform 0.3s ease-in-out;
 }
 
-.map-search-bar:hover {
+.map-dash-bar:hover {
   transform: scale(1.01);
 }
 
 
-.map-search-results {
+.map-dash-results {
   list-style: none;
   padding: 0;
   width: 100%;
@@ -160,27 +160,27 @@ html, body {
   scroll-behavior: smooth;
 }
 
-.map-search-bar::-webkit-scrollbar,
-.map-search-results::-webkit-scrollbar {
+.map-dash-bar::-webkit-scrollbar,
+.map-dash-results::-webkit-scrollbar {
   width: 0.5em;
 }
 
-.map-search-bar::-webkit-scrollbar-thumb,
-.map-search-results::-webkit-scrollbar-thumb {
+.map-dash-bar::-webkit-scrollbar-thumb,
+.map-dash-results::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 
-.map-search-bar {
+.map-dash-bar {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
 
-.map-search-results {
+.map-dash-results {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
 
-.map-search-item:hover{
+.map-dash-item:hover{
   background-color: #f0f0f0; 
 }
 
@@ -195,30 +195,30 @@ html, body {
 
 
 @media screen and (max-width: 600px) {
-  .map-search-results,
+  .map-dash-results,
   .map-reset-btn,
   .map-preload,
-  .map-search-reset,
+  .map-dash-reset,
   .total-trees-planted-date{
     font-size: 10px;
   }
 }
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
-  .map-search-results,
+  .map-dash-results,
   .map-reset-btn,
   .map-preload,
-  .map-search-reset,
+  .map-dash-reset,
   .total-trees-planted-date{
     font-size: 14px;
   }
 }
 
 @media screen and (min-width: 1025px) {
-  .map-search-results,
+  .map-dash-results,
   .map-reset-btn,
   .map-preload,
-  .map-search-reset,
+  .map-dash-reset,
   .total-trees-planted-date{
     font-size: 15px;
   }
