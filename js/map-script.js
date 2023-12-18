@@ -126,7 +126,7 @@ fetch('json/trees.json')
     searchData = data;
     const searchInputBar = document.getElementById('searchInputBar');
     const searchResults = document.getElementById('searchResults');
-    const noResultsItem = document.createElement('li');
+    const noResultsItem = document.createElement('div');
     noResultsItem.innerHTML = '<h5 style="color: grey; text-align: center;">No results found</h5>';
 
     performSearch('');
@@ -167,7 +167,7 @@ fetch('json/trees.json')
         });
 
         Object.entries(areaTreeCountMap).forEach(([areaName, treeCount]) => {
-          const searchCardItem = document.createElement('li');
+          const searchCardItem = document.createElement('div');
           searchCardItem.innerHTML = `
             <div class="map-search-item" style="padding:5px;">
               <h5>Barangay ${areaName}</h5>
