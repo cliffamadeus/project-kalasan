@@ -4,6 +4,7 @@
     "area_name": "Kisolon Tree Park",
     "area_lat":8.334463,
     "area_lng":124.971441,
+    "area_avatar:":"./img/avatar/placeholder.jpeg",
     "area_polygon_vertices": [
       [8.335680, 124.971923],
       [8.335011, 124.972706],

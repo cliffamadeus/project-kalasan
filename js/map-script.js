@@ -163,16 +163,26 @@ fetch('json/trees.json')
         const areaTreeCountMap = {};
         results.forEach(result => {
           const areaName = result.area_name;
+
+          //Added area avatar
+          const areaAvatar = result.area_avatar;
           areaTreeCountMap[areaName] = (areaTreeCountMap[areaName] || 0) + 1;
         });
 
-        Object.entries(areaTreeCountMap).forEach(([areaName, treeCount]) => {
+        Object.entries(areaTreeCountMap).forEach(([areaName,areaAvatar, treeCount]) => {
           const searchCardItem = document.createElement('div');
           searchCardItem.innerHTML = `
             <div class="map-search-item" style="padding:5px;">
-              <h5>Barangay ${areaName}</h5>
-              <p> (${treeCount}) tree record/s found as of ${currentDate}</p>
-              <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
+              <div class="row">
+                <div class="col-sm-4">
+                  <img src="${areaAvatar}" class="rounded float-left" alt="Image">
+                </div>
+                <div class="col-sm-8">
+                  <h5>Barangay ${areaName}</h5>
+                  <p> (${treeCount}) tree record/s found as of ${currentDate}</p>
+                  <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
+                </div>
+              </div>
             </div>
           `;
 
