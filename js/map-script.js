@@ -4,7 +4,9 @@ const markers = L.markerClusterGroup();
 const currentDate = new Date().toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' });
 
 // Tile layer
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+
   attribution: 'Project Kalasan &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributor | custom map by CAFE'
 }).addTo(map);
 
