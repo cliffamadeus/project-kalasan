@@ -168,13 +168,21 @@ fetch('json/trees.json')
           areaTreeCountMap[areaName] = (areaTreeCountMap[areaName] || 0) + 1;
         });
 
+        //Search Objects Rendered form JSON
         Object.entries(areaTreeCountMap).forEach(([areaName, treeCount]) => {
           const searchCardItem = document.createElement('div');
           searchCardItem.innerHTML = `
             <div class="map-search-item" style="padding:5px;">
-              <h5>Barangay ${areaName}</h5>
-              <p> (${treeCount}) tree record/s found as of ${currentDate}</p>
-              <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
+              <div class="row">
+                <div class="col-sm-4">
+                  <img src="./img/tree.png" class="img-thumbnail"></img>
+                </div>
+                <div class="col-sm-8">
+                  <h5>Barangay ${areaName}</h5>
+                  <p> (${treeCount}) tree record/s found as of ${currentDate}</p>
+                  <hr style="border-top: 1px solid #ccc; margin: 5px 0;">
+                </div>
+              </div>         
             </div>
           `;
 
